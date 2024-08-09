@@ -38,12 +38,14 @@ body {
 }
 
 .list-unstyled a:link, .list-unstyled a:visited, .list-unstyled a:active, .list-unstyled a:hover {
-    color: darkgray !important;
+    color: white !important;
 }
 
 
-.myfooter{
-  background-color:black;
+.myfooter {
+    background-color: black;
+    padding-top:20px;
+    min-height:160px;
 }
 
 /*.social_link {
