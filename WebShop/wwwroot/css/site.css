@@ -28,9 +28,37 @@ body {
   margin-bottom: 60px;
 }
 
-.myNav {
+.myNav,.social_link{
     margin-top: -20px;
     margin-bottom: -20px;
+}
+
+.footer_link{
+    text-decoration:none;
+}
+
+.list-unstyled a:link, .list-unstyled a:visited, .list-unstyled a:active, .list-unstyled a:hover {
+    color: darkgray !important;
+}
+
+
+.myfooter{
+  background-color:black;
+}
+
+/*.social_link {
+    margin-top: -20px;
+    margin-bottom: -20px;
+}*/
+
+.headers_footer{
+    margin-bottom:30px;
+    color:white !important;
+}
+
+.copyright{
+    margin-top:-20px;
+    color:darkgrey;
 }
 
 #extra_links p {
