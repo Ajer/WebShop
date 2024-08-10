@@ -8,6 +8,15 @@ html {
   }
 }
 
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+}
+
 /*@media only screen and (min-width: 520px) {
     #wrapper {
         height: 500px;
@@ -15,30 +24,70 @@ html {
     }
 }*/
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+#login-submit:focus, .form-control:focus{  
+    box-shadow: 0 0 0 0.1rem black, 0 0 0 0.25rem #fff;
 }
 
-html {
-  position: relative;
-  min-height: 100%;
+#logout:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #fff;
 }
 
-body {
-  margin-bottom: 60px;
-}
+
 
 .myNav,.social_link{
     margin-top: -20px;
     margin-bottom: -20px;
 }
 
-.footer_link{
-    text-decoration:none;
+#forgot-password, #new-user, #resend-confirmation {
+    text-decoration: none;
+    color:rgb(107,104,95);
+    font-weight:bold;
+}
+
+.footer_link {
+    text-decoration: none;
 }
 
 .list-unstyled a:link, .list-unstyled a:visited, .list-unstyled a:active, .list-unstyled a:hover {
     color: white !important;
+}
+
+/*.form-control:focus, .form-control:not(:disabled):not(.disabled):active:focus {
+    outline: 0;
+    border: 0;
+}*/
+
+/*button,button:focus,.btn,.btn:focus{
+    outline:0 !important;
+    border: 0;
+}*/
+
+/*check-box  , Identity */
+.form-check-input:checked {               
+    background-color: black !important;
+    border: 0;
+}
+
+ /*check-box  , Identity*/ 
+.form-check-input:focus, .label::after, label.form-check-label:focus, .form-check-input::after, .form-check-input:not(:disabled):not(.disabled):active:focus {
+    color: black;
+    outline: 0;
+    border: 0;
+    box-shadow: 0 0 0 0.1rem white !important;
+}
+
+
+/*Make autofill white background*/
+/*input, input:-webkit-autofill, input:-webkit-autofill:focus, input:focus {
+    -webkit-box-shadow: 0 0 0 40rem #ffff inset;
+    outline:0 !important;
+    border: 1px solid lightgray !important;
+}
+*/
+
+.long_t{
+    margin-right:20px;
 }
 
 
@@ -63,9 +112,7 @@ body {
     color:darkgrey;
 }
 
-#extra_links p {
-    margin-top: -10px;
-}
+
 
 #register, #login, #home_index {
     min-height: 1000px;

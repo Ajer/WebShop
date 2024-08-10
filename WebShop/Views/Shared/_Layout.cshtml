@@ -44,12 +44,12 @@
         </div>
     </footer> *@
 
-    <footer class="border-top footer text-muted pb-1 myfooter" >
+    <footer class="border-top footer text-muted pb-1 myfooter" style="font-size:18px !important" >
       <div class="container">
             @*  &copy; 2024 - MVC_2 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a> *@
          <div class="row mt-3">
           <div class="col-md-3 col-lg-3 col-xl-3 mb-4" style="margin-right:50px">
-            <h6 class="headers_footer">Det här är MinSale</h6>
+            <h6 class="headers_footer" style="font-size:20px !important">Det här är MinSale</h6>
             <ul class="list-unstyled text-white-50">
                 <li class="myNav"><a class="footer_link" href="#">Press</a></li>
                     <li class="myNav"><a class="footer_link" href="#">Om MinSale</a></li>
@@ -60,7 +60,7 @@
             </ul>
             </div>
             <div class="col-md-3 col-lg-3 col-xl-3 mb-4" style="margin-right:50px">
-             <h6 class="headers_footer">Handla på MinSale</h6>
+             <h6 class="headers_footer" style="font-size:20px !important">Handla på MinSale</h6>
              <ul class="list-unstyled text-white-50">
                    <li class="myNav"><a class="footer_link" href="#">Försäljningsvillkor</a></li>
                    <li class="myNav"><a class="footer_link" href="#">Fraktinformation</a></li>
@@ -71,7 +71,7 @@
              </ul>
            </div>
            <div class="col-md-3 col-lg-3 col-xl-3 mb-4">
-               <h6 class="headers_footer">Social</h6>
+               <h6 class="headers_footer" style="font-size:20px !important">Social</h6>
                <ul class="list-unstyled text-white-50">
                   <li class="social_link"><a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer"><img src="~/Images/social/twitter_64_white.png" alt="follow on twitter" width="24px" height="24px"></img></a></li>
                   <li class="social_link"><a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer"><img src="~/Images/social/facebook_256_white.png" alt="follow on facebook" width="24px" height="24px"></img></a></li>
@@ -95,7 +95,7 @@
 </html>
 <script>
     $(document).ready(function () {
-        $('#account').on('submit', function (event) {
+        $('.identity').on('submit', function (event) {
             event.preventDefault();
             $('.long_t').addClass("spinner-border spinner-border-sm");
             this.submit();
