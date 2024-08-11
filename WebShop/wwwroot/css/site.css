@@ -17,6 +17,10 @@ body {
     margin-bottom: 60px;
 }
 
+.fnt{
+    font-size:16px;
+}
+
 /*@media only screen and (min-width: 520px) {
     #wrapper {
         height: 500px;
@@ -24,10 +28,17 @@ body {
     }
 }*/
 
+/* Black borders around focused input */
+#resend:focus,
+#backToHomepage:focus,
+#backToLoginpage:focus,
+#forgot-pass:focus,
+#register-submit:focus,
 #login-submit:focus, .form-control:focus{  
     box-shadow: 0 0 0 0.1rem black, 0 0 0 0.25rem #fff;
 }
 
+/* neutralize effect from above on logout-button */
 #logout:focus {
     box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #fff;
 }
@@ -39,7 +50,7 @@ body {
     margin-bottom: -20px;
 }
 
-#forgot-password, #new-user, #resend-confirmation {
+#forgot-password, #new-user, #resend-confirmation,#back-to-login {
     text-decoration: none;
     color:rgb(107,104,95);
     font-weight:bold;
@@ -53,15 +64,26 @@ body {
     color: white !important;
 }
 
-/*.form-control:focus, .form-control:not(:disabled):not(.disabled):active:focus {
-    outline: 0;
-    border: 0;
+/* Help links from microsoft */
+#confirm-link:link, #confirm-link:visited, #confirm-link:active, #confirm-link:hover,
+#register_options:link, #register_options:visited, #register_options:active, #register_options:hover,
+#login_options:link, #login_options:visited, #login_options:active, #login_options:hover {
+    color: black !important;
+}
+
+/*#profile,#email{
+    color:black;
+}
+
+.nav-pills .nav-link.active {
+    background-color: black;
 }*/
 
-/*button,button:focus,.btn,.btn:focus{
+/*a,a:focus,button,button:focus,.btn,.btn:focus{  ----------------------
     outline:0 !important;
     border: 0;
 }*/
+
 
 /*check-box  , Identity */
 .form-check-input:checked {               
@@ -74,17 +96,20 @@ body {
     color: black;
     outline: 0;
     border: 0;
-    box-shadow: 0 0 0 0.1rem white !important;
+    box-shadow: 0 0 0 0.1rem lightgray !important;
 }
 
 
 /*Make autofill white background*/
-/*input, input:-webkit-autofill, input:-webkit-autofill:focus, input:focus {
+#reg_pass:-webkit-autofill, #reg_pass:-webkit-autofill:focus, #reg_email:-webkit-autofill,
+#reg_email:-webkit-autofill:focus,
+#login_pass:-webkit-autofill, #login_pass:-webkit-autofill:focus, #login_email:-webkit-autofill,
+#login_email:-webkit-autofill:focus {
     -webkit-box-shadow: 0 0 0 40rem #ffff inset;
-    outline:0 !important;
+    outline: 0 !important;
     border: 1px solid lightgray !important;
 }
-*/
+
 
 .long_t{
     margin-right:20px;
@@ -94,7 +119,7 @@ body {
 .myfooter {
     background-color: black;
     padding-top:20px;
-    min-height:160px;
+    min-height:300px;
 }
 
 /*.social_link {
