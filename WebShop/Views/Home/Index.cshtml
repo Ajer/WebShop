@@ -2,27 +2,31 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center" id="home_index">
+<div class="text-center" id="home_index" style="margin-top:30px">
 
-    <img src="~/Images/logo/ms_4_1.png" /><h4>Välkommen till MediaSales</h4><p @* style="margin-left:-65px" *@>Vi har allt inom Hemelektronik</p>
-       
+   <img src="~/Images/logo/ms_4_1.png" style="margin-top:-40px"/>
+    <div style="display:inline-block;">
+        <h4>Välkommen till MediaSales</h4>
+        <p class="header_slogan" >Vi har allt inom Hemelektronik</p>
+    </div>
+   
 
-  <section id='heroSection' style="margin-top:50px;">
+  <section id='heroSection' style="margin-top:30px;">
     <div class="container">
         <div class="row">
-            <div class="col-12 col-xl-4  d-flex justify-content-center align-items-center">
+            <div class="col-12 col-xl-4  d-flex justify-content-center align-items-center mycats">
                 <ul class="m-0 p-0">
                     <li><button onclick="window.location.href='/Identity/Account/Login'"><img src="~/Images/category_btn/computer_24.png" /><span style="margin-left:20px">Desktops</span></button></li>
-                        <li><button onclick="window.location.href='/Identity/Account/Register'" href="#"><img src="~/Images/category_btn/computer_24.png" /><span style="margin-left:20px">Laptops</span></button></li>
-                        <li><button onclick="" href="#"><img src="~/Images/category_btn/computer_24.png" /><span style="margin-left:20px"></span>Tv</button></li>
-                        <li><button onclick="" href="#"><img src="~/Images/category_btn/computer_24.png" /><span style="margin-left:20px">Hörlurar</span></button></li>
-                        <li><button onclick="" href="#"><img src="~/Images/category_btn/computer_24.png" /><span style="margin-left:20px">Media</span></button></li>
+                    <li><button onclick="window.location.href='/Identity/Account/Register'" href="#"><img src="~/Images/category_btn/computer_24.png" /><span style="margin-left:20px">Laptops</span></button></li>
+                    <li><button onclick="" href="#"><img src="~/Images/category_btn/computer_24.png" /><span style="margin-left:20px"></span>Tv</button></li>
+                    <li><button onclick="" href="#"><img src="~/Images/category_btn/computer_24.png" /><span style="margin-left:20px">Hörlurar</span></button></li>
+                    <li><button onclick="" href="#"><img src="~/Images/category_btn/computer_24.png" /><span style="margin-left:20px">Media</span></button></li>
                 </ul>
             </div>
             @* <div className="col-12 col-xl-8 d-flex justify-content-center align-items-center container-fluid">
                 <img className="clsNm" style="borderRadius:4px" src="bigSrc" alt="" />
             </div> *@
-              <div class="col-12 col-xl-8 d-flex justify-content-center align-items-center container-fluid" style="margin-left:0px;">
+              <div class="col-12 col-xl-8 d-flex justify-content-center align-items-center" style="margin-left:0px;">
                 <div class="slideshow-container">
 
                     <div class="mySlides">

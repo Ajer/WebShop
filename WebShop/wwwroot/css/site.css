@@ -2,11 +2,7 @@ html {
   font-size: 14px;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
+
 
 html {
     position: relative;
@@ -15,6 +11,8 @@ html {
 
 body {
     margin-bottom: 60px;
+    padding-left:0px;
+    padding-right:0px;
 }
 
 .fnt{
@@ -123,6 +121,12 @@ body {
     background-color: black;
     padding-top:20px;
     min-height:300px;
+    /*min-width:500px;*/
+
+}
+
+.myfooter_col{
+    margin-right:50px;
 }
 
 /*.social_link {
@@ -142,143 +146,281 @@ body {
 
 
 
-#register, #login, #home_index {
+#register, #login {
     min-height: 1000px;
 }
 
+/*.header_slogan {
+    margin-left: -70px;
+}*/
+
+@media only screen and (min-width: 300px) {
+    html {
+        font-size: 16px;
+    }
+    .header_slogan {
+        margin-left: -40px;
+    }
+
+    .myfooter_col {
+        margin-right: 70px;
+    }
+
+    #home_index {
+        min-height: 1600px;
+    }
+    .mycats {
+        margin-bottom: 30px;
+    }
+
+    .prev {
+        margin-left: 70px;
+    }
+
+    .next {
+        margin-right: 70px;
+    }
+}
+
+@media only screen and (min-width: 500px) {
+    html {
+        font-size: 16px;
+    }
+
+    .header_slogan {
+        margin-left: -45px;
+    }
+
+    .myfooter_col {
+        margin-right: 70px;
+    }
+    .mycats {
+        margin-bottom: 30px;
+    }
+
+    .prev{
+        margin-left:50px;
+    }
+
+    .next{
+        margin-right:50px;
+    }
+}
+
+
+@media only screen and (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+    #home_index {
+        min-height: 1000px;
+    }
+
+    .header_slogan {
+        margin-left: -50px;
+    }
+    .mycats {
+        margin-bottom: 30px;
+    }
+
+    /*.prev {
+        left: 0px;
+    }
+
+    .next {
+       right: 0px;
+    }*/
+}
+
+@media only screen and (min-width: 900px) {
+    .header_slogan {
+        margin-left: -55px;
+    }
+    .mycats {
+        margin-bottom: 30px;
+    }
+}
+
+@media only screen and (min-width: 1000px) {
+    .header_slogan {
+        margin-left: -60px;
+    }
+    .mycats {
+        margin-bottom: 30px;
+    }
+}
+@media only screen and (min-width: 1100px) {
+    .header_slogan {
+        margin-left: -65px;
+    }
+    .mycats {
+        margin-bottom: 30px;
+    }
+}
+@media only screen and (min-width: 1200px) {
+    #home_index {
+        min-height: 800px;
+    }
+
+    .header_slogan {
+        margin-left: -70px;
+    }
+
+    .mycats {
+        margin-bottom:0;
+    }
+
+    /*.slideshow-container {       
+        padding-top: 50px;
+    }*/
+
+}
+@media only screen and (min-width: 1400px) {
+    .header_slogan {
+        margin-left: -75px;
+    }
+    .prev {
+        margin-left: 0px;
+    }
+
+    .next {
+        margin-right: 0px;
+    }
+}
 
 
 /* category-btns */
+
 li {
-    list-style-type: none;
-    margin: 10px 0;
+      list-style-type: none;
+      margin: 10px 0;
 }
-
-
+ 
 li button {
-     text-align: left;
-     background-color: white;
-     border: 2px solid black;
-     color: black;
-     width: 300px;
-     height: 40px;
-     border-radius: 4px;
-     font-weight: normal;
-        /* box-shadow: 0 2px 2px rgba(0,0,0,0.2);  */
- }
-
-#heroSection {
-    min-height: 20rem;
-}
-
-
-
-/* --------Slideshow---------- */
-*{
-    box-sizing: border-box
-}
-
-.slideshow-container {
-    padding-top:10px;
-    border:1px solid gray;
-    border-radius:4px;
-    width: 500px;
-    /*max-height:300px;*/
-    position: relative;
-    margin: auto;
-}
-
-.mySlides {
-    display:none;
-}
-
-/*  prev,next btns  */
-.prev, .next {
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    width: auto;
-    margin-top: -22px;
-    padding: 16px;
+    text-align: left;
+    background-color: white;
+    border: 2px solid black;
     color: black;
-    font-weight: bold;
-    font-size: 18px;
-    transition: 0.6s ease;
-    border-radius: 0 3px 3px 0;
-    user-select: none;
-}
-
-.prev{
-    left:0;
-}
-
-/* Position the "next button" to the right */
-.next {
-    right: 0;
-    border-radius: 3px 0 0 3px;
-}
-
-/* On hover, add a black background color with a little see-through */
-.prev:hover, .next:hover {
-        background-color: rgba(68,70,74,0.8);
-        color:white;
+    width: 300px;
+    height: 40px;
+    border-radius: 4px;
+    font-weight: normal;
+            /* box-shadow: 0 2px 2px rgba(0,0,0,0.2);  */
  }
 
-.active, .dot:hover {
-    background-color: #717171;
-}
+    #heroSection {
+        min-height: 20rem;
+    }
 
 
- /*Caption text */
-.text {
-    color: #f2f2f2;
-    font-size: 15px;
-    padding: 8px 12px;
-    position: absolute;
-    bottom: 8px;
-    width: 100%;
-    text-align: center;
-}
 
- /*Number text (1/3 etc)*/ 
-.numbertext {
-    color: #f2f2f2;
-    font-size: 12px;
-    padding: 8px 12px;
-    position: absolute;
-    top: 0;
-}
+    /* --------Slideshow---------- */
+    * {
+        box-sizing: border-box
+    }
 
- /*The dots/bullets/indicators */
-.dot {
-    cursor: pointer;
-    height: 15px;
-    width: 15px;
-    margin: 10px 2px;
-    background-color: #bbb;
-    border-radius: 50%;
-    display: inline-block;
-    transition: background-color 0.6s ease;
-}
+    .slideshow-container {
+        padding-top: 10px;
+        border: 1px solid gray;
+        border-radius: 4px;
+        width: 500px;
+        min-width:500px;
+        /*max-height:300px;*/
+        position: relative;
+        margin: auto;
+    }
 
- .active, .dot:hover {
+    .mySlides {
+        display: none;
+    }
+
+    /*  prev,next btns  */
+    .prev, .next {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        width: auto;
+        margin-top: -22px;
+        padding: 16px;
+        color: black;
+        font-weight: bold;
+        font-size: 18px;
+        transition: 0.6s ease;
+        border-radius: 0 3px 3px 0;
+        user-select: none;
+    }
+
+    .prev {
+        left: 0;
+    }
+
+    /* Position the "next button" to the right */
+    .next {
+        right: 0;
+        border-radius: 3px 0 0 3px;
+    }
+
+        /* On hover, add a black background color with a little see-through */
+        .prev:hover, .next:hover {
+            background-color: rgba(68,70,74,0.8);
+            color: white;
+        }
+
+    .active, .dot:hover {
         background-color: #717171;
- }
+    }
 
-/* Fading animation */
-.fade {
-    /*animation-name: fade;
+
+    /*Caption text */
+    .text {
+        color: #f2f2f2;
+        font-size: 15px;
+        padding: 8px 12px;
+        position: absolute;
+        bottom: 8px;
+        width: 100%;
+        text-align: center;
+    }
+
+    /*Number text (1/3 etc)*/
+    .numbertext {
+        color: #f2f2f2;
+        font-size: 12px;
+        padding: 8px 12px;
+        position: absolute;
+        top: 0;
+    }
+
+    /*The dots/bullets/indicators */
+    .dot {
+        cursor: pointer;
+        height: 15px;
+        width: 15px;
+        margin: 10px 2px;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+        transition: background-color 0.6s ease;
+    }
+
+        .active, .dot:hover {
+            background-color: #717171;
+        }
+
+    /* Fading animation */
+    .fade {
+        /*animation-name: fade;
     animation-duration: 10s;*/
-}
+    }
 
-@keyframes fade {
-   /* from {
+    @keyframes fade {
+        /* from {
         opacity: .4
     }
 
     to {
         opacity: 1
     }*/
-}
+    }
 
-/*  Slideshow - end */
+    /*  Slideshow - end */
