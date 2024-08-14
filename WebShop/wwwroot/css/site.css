@@ -121,7 +121,7 @@ body {
     background-color: black;
     padding-top:20px;
     min-height:300px;
-    /*min-width:500px;*/
+   min-width:500px;        /*-------*/
 
 }
 
