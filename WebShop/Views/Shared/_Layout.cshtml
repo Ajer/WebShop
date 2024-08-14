@@ -3,8 +3,8 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - MediaSales-home</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <title>MediaSales-home</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/WebShop.styles.css" asp-append-version="true" />
@@ -31,21 +31,21 @@
                         </li>
                     </ul> *@
                     <div class="container justify-content-end gap-5">
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#CatNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#CatDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
-                        <div class="collapse navbar-collapse justify-content-end" id="CatNavDropdown">
+                        <div class="collapse navbar-collapse justify-content-end" id="CatDropdown">
                             <ul class="navbar-nav">
-                                <li class="nav-item dropdown gap-5">
+                                <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         Vårt Sortiment
                                     </a>
                                     <ul class="dropdown-menu">
-                                        <li><button class="dropdown-item">Desktops</button></li>
-                                        <li><button class="dropdown-item">Laptops</button></li>
-                                        <li><button class="dropdown-item">TV</button></li>
-                                        <li><button class="dropdown-item">Hörlurar</button></li>
-                                        <li><button class="dropdown-item">Media</button></li>                                    
+                                        <li><button onclick="window.location.href='/Identity/Account/Login'" class="dropdown-item" style="width:120px">Desktops</button></li>
+                                        <li><button class="dropdown-item" style="width:120px">Laptops</button></li>
+                                        <li><button class="dropdown-item" style="width:120px">TV</button></li>
+                                        <li><button class="dropdown-item" style="width:120px">Hörlurar</button></li>
+                                        <li><button class="dropdown-item" style="width:120px">Media</button></li>
                                     </ul>
                                 </li>
                                 @* <li className="nav-item">

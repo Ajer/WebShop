@@ -15,6 +15,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\Images\category_btn\devices2_icons.jpg" />
+    <Content Remove="wwwroot\Images\category_btn\devices_icons.jpg" />
+    <Content Remove="wwwroot\Images\category_btn\earphone_icon.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.4" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.7" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="8.0.7" />

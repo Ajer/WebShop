@@ -118,7 +118,7 @@ body {
 
 
 .myfooter {
-    background-color: black;
+    background-color:black;
     padding-top:20px;
     min-height:300px;
    min-width:500px;        /*-------*/
@@ -179,7 +179,9 @@ li button {
         min-height: 20rem;
     }
 
-
+    .dropdown-menu{
+        min-width:inherit;
+    }
 
     /* --------Slideshow---------- */
     * {
