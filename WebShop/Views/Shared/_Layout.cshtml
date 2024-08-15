@@ -20,7 +20,7 @@
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-start" style="margin-left:15px;">
                     <input type="text" name="srch" />
                 </div>
 
@@ -36,7 +36,7 @@
                         </li>
                     </ul> *@
                     <div class="container justify-content-end gap-5">
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#CatDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                        <button class="navbar-toggler" style="margin-top:10px" type="button" data-bs-toggle="collapse" data-bs-target="#CatDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
                         <div class="collapse navbar-collapse justify-content-end" id="CatDropdown">
@@ -66,12 +66,25 @@
                                 <input type="radio" className="btn-check" name="options-base" id="optionEN" autocomplete="off" />
                                 <label className="btn" for="optionEN">EN</label>
                             </div> *@
-                        </div>
+                            @* <div class="collapse navbar-collapse justify-content-end" id="login-dropdown">
+                                <ul class="navbar-nav">
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Logga in
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li><button class="dropdown-item">Logga in</button></li>
+                                            <li><button class="dropdown-item">Registrera dig</button></li>
+                                        </ul>
+                                    </li>                        
+                                </ul>
+                            </div>
+                            *@
+                            <partial name="_LoginPartialDropdown" />
                     </div>
-
-
-
-                    <partial name="_LoginPartial" />
+                   
+                    @* <partial name="_LoginPartial" /> *@
+                    
                 </div>
             </div>
         </nav>

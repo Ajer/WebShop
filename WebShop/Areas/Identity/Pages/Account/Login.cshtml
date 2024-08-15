@@ -13,7 +13,7 @@
     <div class="col-md-4">
         <section>
             <form id="account" class="identity" method="post">
-                <h2>Log in to your account</h2>
+                <h2>Logga in</h2>
                 <hr />
                 <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
                 <div class="form-floating mb-3">
@@ -29,11 +29,11 @@
                 <div class="checkbox mb-3">
                     <label asp-for="Input.RememberMe" class="form-label">
                         <input id="login_rememberme" class="form-check-input" asp-for="Input.RememberMe" />
-                        @Html.DisplayNameFor(m => m.Input.RememberMe)
+                        @* @Html.DisplayNameFor(m => m.Input.RememberMe) *@ Kom ihåg mig på den här datorn
                     </label>
                 </div>
                 <div>             
-                    <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-dark"><span role="status" aria-hidden="true" class="long_t"></span>Log in</button>
+                    <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-dark"><span role="status" aria-hidden="true" class="long_t"></span>Logga in</button>
                 </div>
                 <div style="margin-top:30px">
                     <p style="margin-bottom:5px">

@@ -4,12 +4,12 @@
     ViewData["Title"] = "Register";
 }
 
-<h2>@ViewData["Title"]</h2>
+@* <h2>@ViewData["Title"]</h2> *@
 
 <div class="row" id="register">
     <div class="col-md-4">
         <form id="registerForm" class="identity" asp-route-returnUrl="@Model.ReturnUrl" method="post">
-            <h3>Create a new account.</h3>
+            <h3>Registrera ett nytt konto.</h3>
             <hr />
             <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
             <div class="form-floating mb-3">
@@ -24,10 +24,10 @@
             </div>
             <div class="form-floating mb-3">
                 <input asp-for="Input.ConfirmPassword" id="reg_pass" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
-                <label asp-for="Input.ConfirmPassword">Confirm Password</label>
+                <label asp-for="Input.ConfirmPassword">Upprepa Password</label>
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
             </div>
-            <button id="register-submit" type="submit" class="w-100 btn btn-lg btn-dark"><span role="status" aria-hidden="true" class="long_t"></span>Register</button>
+            <button id="register-submit" type="submit" class="w-100 btn btn-lg btn-dark"><span role="status" aria-hidden="true" class="long_t"></span>Registrera</button>
         </form>
     </div>
     <div class="col-md-6 col-md-offset-2">
