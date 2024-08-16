@@ -11,7 +11,7 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-light border-bottom box-shadow mb-3" style="min-width:500px;">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-light border-bottom box-shadow mb-3" style="min-width:700px;">
             <div class="container-fluid">
                 <a asp-controller="Home" asp-action="Index"><img src="~/Images/logo/logo_transparent.png" /></a>
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">MediaSales</a>
@@ -21,7 +21,14 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-start" style="margin-left:15px;">
-                    <input type="text" name="srch" />
+                    <div class="input-group" >              
+                        <input type="text" class="form-control" name="srch" id="srch-field">
+                        <a id="srch-btn" class="input-group-text" href="#" style="background-color:#fafafa">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="bi bi-search" style="fill:currentColor;color:gray" viewBox="0 0 16 16">
+                                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                            </svg>
+                        </a>
+                    </div>
                 </div>
 
 
@@ -84,8 +91,6 @@
                             <partial name="_LoginPartialCartDropdown" />
                     </div>
                    
-                    @* <partial name="_LoginPartial" /> *@
-                    
                 </div>
             </div>
         </nav>
@@ -159,6 +164,18 @@
     //         this.submit();
     //     });
     // });
+
+    $(document).ready(function () {
+        $('#srch-field').on('focus', function (event) {
+            $('#srch-btn').addClass("srch-focus");
+        });
+    });
+
+    $(document).ready(function () {
+        $('#srch-field').on('blur', function (event) {
+            $('#srch-btn').removeClass("srch-focus");
+        });
+    });
 
     let slideIndex = 1;
     showSlides(slideIndex);

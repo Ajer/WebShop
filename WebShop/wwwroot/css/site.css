@@ -41,9 +41,17 @@ body {
     box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #fff;
 }
 
+#srch-field:focus {
+    box-shadow: 0 0 0 0.05rem white;
+    border: 1px solid gray;
+}
+
+.srch-focus{
+    border: 1px solid gray;
+ }
 
 
-.myNav,.social_link{
+.myNav, .social_link {
     margin-top: -20px;
     margin-bottom: -20px;
 }
@@ -121,7 +129,7 @@ body {
     background-color:black;
     padding-top:20px;
     min-height:300px;
-   min-width:500px;        /*--- 500 ----*/
+   min-width:700px;        /*--- 500 ----*/
 
 }
 
