@@ -1,0 +1,46 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+
+    @if (SignInManager.IsSignedIn(User))
+    {
+       <div class="collapse navbar-collapse justify-content-end"  id="login-dropdown">    
+         <ul class="navbar-nav">
+            <a class="d-flex" asp-area="" asp-controller="Home" asp-action="Index"><i class="bi bi-cart" style="font-size:2rem;color:gray;"></i></a>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Konto
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end">                   
+                    <li>
+                        <button class="nav-link text-dark dropdown-item" onclick="window.location.href='/Identity/Account/Manage/Index'" title="Manage"><span style="margin-left:15px">@User.Identity?.Name</span></button>
+                    </li>
+                    <li>
+                        <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                            <button type="submit" id="logout" class="nav-link btn btn-link text-dark dropdown-item"><span style="margin-left:15px">Logga ut</span></button>
+                        </form>
+                    </li>
+                </ul>
+            </li>
+         </ul>
+       </div>
+
+    }
+    else
+    {
+      <div class="collapse navbar-collapse justify-content-end" id="login-dropdown">     
+        <ul class="navbar-nav">
+            <a class="d-flex" asp-area="" asp-controller="Home" asp-action="Index" style="margin-right:0px"><i class="bi bi-cart" style="font-size:2rem;color:gray;"></i></a>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Logga in
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end">
+                    <li><button onclick="window.location.href='/Identity/Account/Login'" class="dropdown-item">Logga in</button></li>
+                    <li><button onclick="window.location.href='/Identity/Account/Register'" class="dropdown-item">Registrera dig</button></li>
+                </ul>
+            </li>
+        </ul>
+      </div>
+    }
