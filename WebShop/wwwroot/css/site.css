@@ -129,7 +129,7 @@ body {
     background-color:black;
     padding-top:20px;
     min-height:300px;
-   min-width:700px;        /*--- 500 ----*/
+   min-width:500px;        /*--- 500 ----*/
 
 }
 
@@ -154,17 +154,19 @@ body {
 
 
 
-#register, #login {
+#register, #login{
     min-height: 1000px;
 }
+
+/*#products {
+    min-height: 1600px;
+}*/
 
 /*.header_slogan {
     margin-left: -70px;
 }*/
-
-
 .dropdown-item:active {
-    background-color:darkgray !important;
+    background-color: darkgray !important;
 }
 
 
@@ -340,6 +342,9 @@ li button {
     .next {
         margin-right: 80px;
     }
+    #products {
+        min-height: 3500px;
+    }
 }
 
 @media only screen and (min-width: 500px) {
@@ -366,6 +371,14 @@ li button {
     .next {
         margin-right: 50px;
     }
+
+    #products {
+        min-height: 3500px;
+    }
+
+    .card{
+        max-width:520px;
+    }
 }
 
 
@@ -390,6 +403,10 @@ li button {
         margin-bottom: 30px;
     }
 
+    #products {
+        min-height: 1600px;
+    }
+
     /*.prev {
         left: 0px;
     }
@@ -407,6 +424,9 @@ li button {
     .mycats {
         margin-bottom: 30px;
     }
+    #products {
+        min-height: 1600px;
+    }
 }
 
 @media only screen and (min-width: 1000px) {
@@ -417,6 +437,9 @@ li button {
     .mycats {
         margin-bottom: 30px;
     }
+    #products {
+        min-height: 1600px;
+    }
 }
 
 @media only screen and (min-width: 1100px) {
@@ -426,6 +449,9 @@ li button {
 
     .mycats {
         margin-bottom: 30px;
+    }
+    #products {
+        min-height: 1600px;
     }
 }
 
@@ -445,6 +471,9 @@ li button {
     /*.slideshow-container {       
         padding-top: 50px;
     }*/
+    #products {
+        min-height: 1600px;
+    }
 
 }
 
@@ -459,5 +488,8 @@ li button {
 
     .next {
         margin-right: 0px;
+    }
+    #products {
+        min-height: 1600px;
     }
 }

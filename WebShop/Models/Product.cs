@@ -17,6 +17,8 @@ namespace WebShop.Models
 
         public bool IsDiscount { get; set; }
 
+        public int? QuantityInStore { get; set; }
+
         public string? ImageUrl { get; set; }
 
         public int CategoryId { get; set; }     // FK
