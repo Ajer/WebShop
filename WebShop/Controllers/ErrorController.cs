@@ -29,20 +29,20 @@ namespace WebShop.Controllers
                 return RedirectToAction("GenError",0);
             }
 
-        }
+         }
 
         [Route("/[Controller]/[Action]")]     //Doesnt find RedirectAction without this
         public IActionResult Error404()
-         {
+        {
             return View();
-         }
+        }
 
 
         [Route("/[Controller]/[Action]")]     //Doesnt find RedirectAction without this
         public IActionResult GenError(int status)
-         {
+        {
                return View(status);
 
-         }
+        }
     }
 }

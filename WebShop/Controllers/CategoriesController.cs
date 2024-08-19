@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using WebShop.Data;
+using WebShop.Dto;
 using WebShop.Models;
 
 namespace WebShop.Controllers
@@ -27,7 +28,7 @@ namespace WebShop.Controllers
 
 
         // GET: Categories/ShowProduct/5
-
+        // Shows all products with category-id=id
         [HttpGet("Categories/ShowProduct/{id}")]
         public async Task<IActionResult> ShowProduct(int? id)
         {
@@ -36,14 +37,36 @@ namespace WebShop.Controllers
                 return NotFound();
             }
 
-            var category = await _context.Categories
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (category == null)
+            var cat = await _context.Categories.Where(c => c.Id == id).FirstOrDefaultAsync();
+            var prods = await _context.Products.Where(p => p.CategoryId == id).ToListAsync(); // only products with categoryId==Id
+
+            if (cat != null && prods != null)
             {
-                return NotFound();
+                List<ProductDto> prodDtos = new List<ProductDto>();
+                foreach (var p in prods)
+                {
+                    var a = new ProductDto
+                    {
+                        Id = p.Id,
+                        Name = p.Name,
+                        SwedishCatName = cat.SwedishName,
+                        Description = p.Description,
+                        Price = p.Price,
+                        DiscountPrice = p.DiscountPrice,
+                        IsDiscount = p.IsDiscount,
+                        ImageUrl = p.ImageUrl,
+                        QuantityInStore = p.QuantityInStore
+                    };
+                    prodDtos.Add(a);
+                }
+                return View(prodDtos);
+            }
+            else
+            {
+                return RedirectToAction("Error404", "Error");
             }
 
-            return View(category);
+            
         }
 
 

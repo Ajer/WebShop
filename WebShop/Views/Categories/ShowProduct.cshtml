@@ -1,14 +1,14 @@
-﻿@model WebShop.Models.Category
+﻿@model List<WebShop.Dto.ProductDto>
 
 @{
-    ViewData["Title"] = "MediaSales - " + @Model.SwedishName;
+    ViewData["Title"] = "MediaSales - " + @Model[0].SwedishCatName;
 }
 
 
 <div class="container" style="margin-top:50px;padding:0 !important" id="products">
-    <h4>@Model.SwedishName</h4>
+    <h4>@Model[0].SwedishCatName</h4>
     <div>
-        <h6>Hem->Produkter->@Model.SwedishName</h6>
+        <h6>Hem->Produkter->@Model[0].SwedishCatName</h6>
     </div>
     <hr />
 
@@ -21,8 +21,9 @@
                     <div class="card-body d-md-flex flex-column">
                         <!-- <div style="height:600px"> -->
                         <h5 class="card-title">Dell Inspiron 3030</h5>
-                        <h5 style="font-size:12px">Desktop</h5>
+                        @* <h5 style="font-size:12px">Desktop</h5> *@
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <h5 style="font-size:12px;color:forestgreen">I lager: 30st</h5>
                         <h5 class="card-text">10200 kr</h5>
                         <a href="#" class="mt-auto btn btn-dark" style="max-width:200px">Lägg i varukorgen</a>
                         <!-- </div>               -->
@@ -35,8 +36,9 @@
                     <div class="card-body d-md-flex flex-column">
                         <!-- <div style="height:600px"> -->
                         <h5 class="card-title">HP Pavilion Gaming TG01 desktop</h5>
-                        <h5 style="font-size:12px">Desktop</h5>
+                        @* <h5 style="font-size:12px">Desktop</h5> *@
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <h5 style="font-size:12px;color:crimson">Ej i lager</h5>
                         <h5 class="card-text">5500 kr</h5>
                         <a href="#" class="mt-auto btn btn-dark" style="max-width:200px">Lägg i varukorgen</a>
                         <!-- </div> -->
@@ -49,8 +51,9 @@
                 <div class="card-body d-md-flex flex-column">
                     <!-- <div style="height:600px"> -->
                     <h5 class="card-title">Dell Inspiron 3090</h5>
-                    <h5 style="font-size:12px">Desktop</h5>
+                    @* <h5 style="font-size:12px">Desktop</h5> *@
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <h5 style="font-size:12px;color:forestgreen">I lager: 30st</h5>
                     <h5 class="card-text">5500 kr</h5>
                     <a href="#" class="mt-auto btn btn-dark" style="max-width:200px">Lägg i varukorgen</a>
                     <!-- </div> -->
@@ -63,8 +66,9 @@
                 <div class="card-body d-md-flex flex-column">
                     <!-- <div style="height:600px"> -->
                     <h5 class="card-title">HP Pavilion TP01 3042</h5>
-                    <h5 style="font-size:12px">Desktop</h5>
+                    @* <h5 style="font-size:12px">Desktop</h5> *@
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <h5 style="font-size:12px;color:forestgreen">I lager: 30st</h5>
                     <h5 class="card-text">5500 kr</h5>
                     <a href="#" class="mt-auto btn btn-dark" style="max-width:200px">Lägg i varukorgen</a>
                     <!-- </div> -->
