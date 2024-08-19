@@ -6,10 +6,16 @@ namespace WebShop.Models
     {
         public int Id { get; set; }
 
-        [MaxLength(50)]
+        [MaxLength(100)]
         public string Name { get; set; }
 
         public string? Description { get; set; }
+
+        public double? Price { get; set; }
+
+        public double? DiscountPrice { get; set; }
+
+        public bool IsDiscount { get; set; }
 
         public string? ImageUrl { get; set; }
 

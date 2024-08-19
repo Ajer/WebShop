@@ -326,6 +326,9 @@ li button {
         min-height: 1600px;
     }
 
+    #register, #login {
+        min-height: 1400px;
+    }
     .mycats {
         margin-bottom: 30px;
     }
@@ -373,6 +376,10 @@ li button {
 
     #home_index {
         min-height: 1000px;
+    }
+
+    #register, #login {
+        min-height: 850px;
     }
 
     .header_slogan {
@@ -424,7 +431,7 @@ li button {
 
 @media only screen and (min-width: 1200px) {
     #home_index {
-        min-height: 800px;
+        min-height: 850px;
     }
 
     .header_slogan {

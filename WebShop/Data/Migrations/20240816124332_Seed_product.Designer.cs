@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebShop.Data;
 
@@ -11,9 +12,11 @@ using WebShop.Data;
 namespace WebShop.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240816124332_Seed_product")]
+    partial class Seed_product
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -260,22 +263,13 @@ namespace WebShop.Data.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double?>("DiscountPrice")
-                        .HasColumnType("float");
-
                     b.Property<string>("ImageUrl")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsDiscount")
-                        .HasColumnType("bit");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
-
-                    b.Property<double?>("Price")
-                        .HasColumnType("float");
 
                     b.HasKey("Id");
 
@@ -289,242 +283,176 @@ namespace WebShop.Data.Migrations
                             Id = 1,
                             CategoryId = 1,
                             Description = "Lorem Ipsum dolet...",
-                            DiscountPrice = 0.0,
                             ImageUrl = "desktop-inspiron-3030-mt.jpg",
-                            IsDiscount = false,
-                            Name = "Desktop-inspiron-3030-mt",
-                            Price = 7700.0
+                            Name = "Desktop-inspiron-3030-mt"
                         },
                         new
                         {
                             Id = 2,
                             CategoryId = 1,
                             Description = "Lorem Ipsum dolet...",
-                            DiscountPrice = 0.0,
                             ImageUrl = "desktop-inspiron-3910.jpg",
-                            IsDiscount = false,
-                            Name = "Desktop-inspiron-3910",
-                            Price = 8800.0
+                            Name = "Desktop-inspiron-3910"
                         },
                         new
                         {
                             Id = 3,
                             CategoryId = 1,
                             Description = "Lorem Ipsum dolet...",
-                            DiscountPrice = 0.0,
                             ImageUrl = "HP_Pavilion_Gaming_Desktop_TG01.jpg",
-                            IsDiscount = false,
-                            Name = "HP_Pavilion_Gaming_Desktop_TG01",
-                            Price = 9900.0
+                            Name = "HP_Pavilion_Gaming_Desktop_TG01"
                         },
                         new
                         {
                             Id = 4,
                             CategoryId = 1,
                             Description = "Lorem Ipsum dolet...",
-                            DiscountPrice = 0.0,
                             ImageUrl = "HP_Pavilion_TP01_3042.jpg",
-                            IsDiscount = false,
-                            Name = "HP_Pavilion_TP01_3042",
-                            Price = 6500.0
+                            Name = "HP_Pavilion_TP01_3042"
                         },
                         new
                         {
                             Id = 5,
                             CategoryId = 2,
                             Description = "Lorem Ipsum dolet...",
-                            DiscountPrice = 0.0,
                             ImageUrl = "dell-vostro-3520-core-i5-16gb-512gb-156.jpg",
-                            IsDiscount = false,
-                            Name = "Dell-vostro-3520-core-i5-16gb-512gb-156",
-                            Price = 8300.0
+                            Name = "Dell-vostro-3520-core-i5-16gb-512gb-156"
                         },
                         new
                         {
                             Id = 6,
                             CategoryId = 2,
                             Description = "Lorem Ipsum dolet...",
-                            DiscountPrice = 0.0,
                             ImageUrl = "hp_14_ep0875no.jpg",
-                            IsDiscount = false,
-                            Name = "HP_14_ep0875no",
-                            Price = 5700.0
+                            Name = "HP_14_ep0875no"
                         },
                         new
                         {
                             Id = 7,
                             CategoryId = 2,
                             Description = "Lorem Ipsum dolet...",
-                            DiscountPrice = 0.0,
                             ImageUrl = "hp-255-g8-ryzen-5-8gb-256gb-156.jpg",
-                            IsDiscount = false,
-                            Name = "HP-255-g8-ryzen-5-8gb-256gb-156",
-                            Price = 4700.0
+                            Name = "HP-255-g8-ryzen-5-8gb-256gb-156"
                         },
                         new
                         {
                             Id = 8,
                             CategoryId = 2,
                             Description = "Lorem Ipsum dolet...",
-                            DiscountPrice = 0.0,
                             ImageUrl = "lenovo-thinkpad-l13-g3-ryzen-3-8gb-256gb-133.jpg",
-                            IsDiscount = false,
-                            Name = "Lenovo-thinkpad-l13-g3-ryzen-3-8gb-256gb-133",
-                            Price = 9900.0
+                            Name = "Lenovo-thinkpad-l13-g3-ryzen-3-8gb-256gb-133"
                         },
                         new
                         {
                             Id = 9,
                             CategoryId = 2,
                             Description = "Lorem Ipsum dolet...",
-                            DiscountPrice = 0.0,
                             ImageUrl = "Macbook_Air_Retina_A2179_8gb_256gb.jpg",
-                            IsDiscount = false,
-                            Name = "Macbook_Air_Retina_A2179_8gb_256gb",
-                            Price = 12300.0
+                            Name = "Macbook_Air_Retina_A2179_8gb_256gb"
                         },
                         new
                         {
                             Id = 10,
                             CategoryId = 2,
                             Description = "Lorem Ipsum dolet...",
-                            DiscountPrice = 0.0,
                             ImageUrl = "msi-modern-14-c7m-ryzen-7-16gb-512gb-14.jpg",
-                            IsDiscount = false,
-                            Name = "Msi-modern-14-c7m-ryzen-7-16gb-512gb-14",
-                            Price = 9100.0
+                            Name = "Msi-modern-14-c7m-ryzen-7-16gb-512gb-14"
                         },
                         new
                         {
                             Id = 11,
                             CategoryId = 2,
                             Description = "Lorem Ipsum dolet...",
-                            DiscountPrice = 0.0,
                             ImageUrl = "samsung-galaxy-book3-pro-core-i7-16gb-512gb-14.jpg",
-                            IsDiscount = false,
-                            Name = "Samsung-galaxy-book3-pro-core-i7-16gb-512gb-14",
-                            Price = 6700.0
+                            Name = "Samsung-galaxy-book3-pro-core-i7-16gb-512gb-14"
                         },
                         new
                         {
                             Id = 12,
                             CategoryId = 3,
                             Description = "Lorem Ipsum dolet...",
-                            DiscountPrice = 0.0,
                             ImageUrl = "samsung-tq55q70c-55-4k-qled-smart-tv-2023.jpg",
-                            IsDiscount = false,
-                            Name = "Samsung-tq55q70c-55-4k-qled-smart-tv-2023",
-                            Price = 5500.0
+                            Name = "Samsung-tq55q70c-55-4k-qled-smart-tv-2023"
                         },
                         new
                         {
                             Id = 13,
                             CategoryId = 3,
                             Description = "Lorem Ipsum dolet...",
-                            DiscountPrice = 0.0,
                             ImageUrl = "samsung-tu65cu7105k-1651-cm-65-4k-ultra-hd-smart-tv.jpg",
-                            IsDiscount = false,
-                            Name = "Samsung-tu65cu7105k-1651-cm-65-4k-ultra-hd-smart-tv",
-                            Price = 4900.0
+                            Name = "Samsung-tu65cu7105k-1651-cm-65-4k-ultra-hd-smart-tv"
                         },
                         new
                         {
                             Id = 14,
                             CategoryId = 4,
                             Description = "Lorem Ipsum dolet...",
-                            DiscountPrice = 0.0,
                             ImageUrl = "Apple _AirPods_Pro_2nd_gen_ with MagSafe Charging_Case_(USB‑C).jpg",
-                            IsDiscount = false,
-                            Name = "Apple _AirPods_Pro_2nd_gen_ with MagSafe Charging_Case_(USB‑C)",
-                            Price = 2400.0
+                            Name = "Apple _AirPods_Pro_2nd_gen_ with MagSafe Charging_Case_(USB‑C)"
                         },
                         new
                         {
                             Id = 15,
                             CategoryId = 4,
                             Description = "Lorem Ipsum dolet...",
-                            DiscountPrice = 0.0,
                             ImageUrl = "iphone-6-head-phone_rs130.jpg",
-                            IsDiscount = false,
-                            Name = "Iphone-6-head-phone_rs130",
-                            Price = 1700.0
+                            Name = "Iphone-6-head-phone_rs130"
                         },
                         new
                         {
                             Id = 16,
                             CategoryId = 4,
                             Description = "Lorem Ipsum dolet...",
-                            DiscountPrice = 0.0,
                             ImageUrl = "J917.jpg",
-                            IsDiscount = false,
-                            Name = "J917",
-                            Price = 1170.0
+                            Name = "J917"
                         },
                         new
                         {
                             Id = 17,
                             CategoryId = 4,
                             Description = "Lorem Ipsum dolet...",
-                            DiscountPrice = 0.0,
                             ImageUrl = "vinnfier_elite_5BT_black.jpg",
-                            IsDiscount = false,
-                            Name = "Vinnfier_elite_5BT_black",
-                            Price = 1600.0
+                            Name = "Vinnfier_elite_5BT_black"
                         },
                         new
                         {
                             Id = 18,
                             CategoryId = 4,
                             Description = "Lorem Ipsum dolet...",
-                            DiscountPrice = 0.0,
                             ImageUrl = "vinnfier_elite_5BT_white.jpg",
-                            IsDiscount = false,
-                            Name = "Vinnfier_elite_5BT_white",
-                            Price = 1600.0
+                            Name = "Vinnfier_elite_5BT_white"
                         },
                         new
                         {
                             Id = 19,
                             CategoryId = 5,
-                            Description = "Kvalitets-tangentbord från HP",
-                            DiscountPrice = 0.0,
+                            Description = "Lorem Ipsum dolet...",
                             ImageUrl = "HP_Desktop_320K_keybord.jpg",
-                            IsDiscount = false,
-                            Name = "HP_Desktop_320K_keybord",
-                            Price = 199.0
+                            Name = "HP_Desktop_320K_keybord"
                         },
                         new
                         {
                             Id = 20,
                             CategoryId = 5,
-                            Description = "Liten bärbar högtalare med imponerande ljudkvalitet både i bas och diskant",
-                            DiscountPrice = 0.0,
+                            Description = "Lorem Ipsum dolet...",
                             ImageUrl = "samsung-hw-b660-soundbar.jpg",
-                            IsDiscount = false,
-                            Name = "Samsung-hw-b660-soundbar.jpg",
-                            Price = 1300.0
+                            Name = "Samsung-hw-b660-soundbar.jpg"
                         },
                         new
                         {
                             Id = 21,
                             CategoryId = 5,
-                            Description = "Sladdlös mus",
-                            DiscountPrice = 0.0,
+                            Description = "Lorem Ipsum dolet...",
                             ImageUrl = "voxicon-office-mus-m30wlb-rf-wireless.jpg",
-                            IsDiscount = false,
-                            Name = "Voxicon-office-mus-m30wlb-rf-wireless",
-                            Price = 399.0
+                            Name = "Voxicon-office-mus-m30wlb-rf-wireless"
                         },
                         new
                         {
                             Id = 22,
                             CategoryId = 5,
-                            Description = "Fantastisk inomhus-router med den senaste säkerheten.Förberedd för 5G",
-                            DiscountPrice = 0.0,
+                            Description = "Lorem Ipsum dolet...",
                             ImageUrl = "zyxel-nebula-fwa505-indoor-5g-router.jpg",
-                            IsDiscount = false,
-                            Name = "Zyxel-nebula-fwa505-indoor-5g-router",
-                            Price = 2200.0
+                            Name = "Zyxel-nebula-fwa505-indoor-5g-router"
                         });
                 });
 

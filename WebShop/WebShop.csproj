@@ -37,7 +37,6 @@
     <Folder Include="wwwroot\Images\logo\" />
     <Folder Include="wwwroot\Images\Products\Laptops\" />
     <Folder Include="wwwroot\Images\Products\Desktops\" />
-    <Folder Include="wwwroot\Images\Products\Earphones\" />
     <Folder Include="wwwroot\Images\Products\Tvs\" />
   </ItemGroup>
 
