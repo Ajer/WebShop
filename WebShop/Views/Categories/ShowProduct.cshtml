@@ -13,33 +13,33 @@
     <hr />
 
 
-        <div class="row gy-3 gx-4" style="margin-bottom:30px">   @* gx-5 *@
+        <div class="row gy-3 gx-4" style="margin-bottom:30px">   
             <div class="col-md-4">
             <div class="card" style="min-width:240px;height:100%;">     @* "min-width:240px;height:100%" *@
                     <!--style="width: 15rem;" -->
-                    <img src="~/Images/Products/Desktops/desktop-inspiron-3030-mt_1.jpg" class="card-img-top" alt="" />
+                    <img src="~/Images/Products/Desktops/@Model[1].ImageUrl" class="card-img-top" alt="" />
                     <div class="card-body d-md-flex flex-column">
-                      <h5 class="card-title">@Model[0].Name</h5>
-                      <p class="card-text">Fantastisk inomhus-router med den senaste säkerheten. Förberedd för 5G</p>
-                      @if(Model[0].QuantityInStore>0)
+                      <h5 class="card-title">@Model[1].Name</h5>
+                      <p class="card-text">@Model[1].Description</p>
+                      @if(Model[1].QuantityInStore>0)
                       {
-                          <h5 style="font-size:12px;color:forestgreen">I lager: @Model[0].QuantityInStore st</h5>
+                          <h5 style="font-size:12px;color:forestgreen">I lager: @Model[1].QuantityInStore st</h5>
                       }
                       else
                       {
                           <h5 style="font-size:12px;color:crimson">Ej i lager</h5>
                       }
-                      @if (Model[0].IsDiscount)
+                      @if (Model[1].IsDiscount)
                       {
                           <div style="display:block;margin-bottom:15px;">
-                            <h5 class="card-text" style="text-decoration:line-through;float:left">@Model[0].Price kr</h5>
-                            <h5 class="card-text" style="float:right;color:white;background-color:darkgreen;border:2px solid darkgreen;border-radius:4px;padding-left:5px;padding-right:5px;">@Model[0].DiscountPrice kr</h5>
+                            <h5 class="card-text" style="text-decoration:line-through;float:left">@Model[1].Price kr</h5>
+                            <h5 class="card-text" style="float:right;color:white;background-color:darkgreen;border:2px solid darkgreen;border-radius:4px;padding-left:5px;padding-right:5px;">@Model[1].DiscountPrice kr</h5>
                             <h6 class="campaign" style="float:right;margin-top:5px;margin-right:5px;">Kampanj</h6>
                           </div><br/>
                       }
                       else
                       {
-                         <h5 class="card-text">@Model[0].Price kr</h5>
+                         <h5 class="card-text">@Model[1].Price kr</h5>
                       }
                      <div class="mt-auto" style="clear:both">
                         <a href="#" class="btn btn-dark" style="max-width:200px">Lägg i varukorgen</a>
@@ -51,9 +51,9 @@
             <div class="card" style="min-width:240px;height:100%;">
                 <img src="~/Images/Products/Desktops/HP_Pavilion_Gaming_Desktop_TG01_1.jpg" class="card-img-top" alt="" />
                     <div class="card-body d-md-flex flex-column">
-                        <!-- <div style="height:600px"> -->
+                        
                         <h5 class="card-title">HP Pavilion Gaming TG01 desktop</h5>
-                        @* <h5 style="font-size:12px">Desktop</h5> *@
+                     
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                         <h5 style="font-size:12px;color:crimson">Ej i lager</h5>
                         <h5 class="card-text">5500 kr</h5>
@@ -67,24 +67,24 @@
               <div class="card" style="min-width:240px;height:100%;">
                 <img src="~/Images/Products/Desktops/desktop-inspiron-3910_1.jpg"  class="card-img-top" alt="">
                 <div class="card-body d-md-flex flex-column">
-                    <!-- <div style="height:600px"> -->
+                  
                     <h5 class="card-title">Dell Inspiron 3090</h5>
-                    @* <h5 style="font-size:12px">Desktop</h5> *@
+                
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                     <h5 style="font-size:12px;color:forestgreen">I lager: 30st</h5>
                     <h5 class="card-text">5500 kr</h5>
                     <a href="#" class="mt-auto btn btn-dark" style="max-width:200px">Lägg i varukorgen</a>
-                    <!-- </div> -->
+                   
                 </div>
               </div>
-            </div>
+            </div> 
             <div class="col-md-4">
               <div class="card" style="min-width:240px;height:100%;">
                 <img src="~/Images/Products/Desktops/HP_Pavilion_TP01_3042_1.jpg" class="card-img-top" alt="">
                 <div class="card-body d-md-flex flex-column">
-                    <!-- <div style="height:600px"> -->
+                
                     <h5 class="card-title">HP Pavilion TP01 3042</h5>
-                    @* <h5 style="font-size:12px">Desktop</h5> *@
+                 
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                     <h5 style="font-size:12px;color:forestgreen">I lager: 30st</h5>
                     <h5 class="card-text">5500 kr</h5>
