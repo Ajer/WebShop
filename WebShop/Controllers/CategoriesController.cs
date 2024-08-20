@@ -49,6 +49,7 @@ namespace WebShop.Controllers
                     {
                         Id = p.Id,
                         Name = p.Name,
+                        CatName = cat.Name,
                         SwedishCatName = cat.SwedishName,
                         Description = p.Description,
                         Price = p.Price,
@@ -59,6 +60,8 @@ namespace WebShop.Controllers
                     };
                     prodDtos.Add(a);
                 }
+                ViewBag.Cat = cat.SwedishName;
+
                 return View(prodDtos);
             }
             else
