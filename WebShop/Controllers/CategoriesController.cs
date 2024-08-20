@@ -65,7 +65,6 @@ namespace WebShop.Controllers
             {
                 return RedirectToAction("Error404", "Error");
             }
-
             
         }
 

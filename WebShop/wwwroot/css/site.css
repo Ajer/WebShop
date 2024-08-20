@@ -197,6 +197,10 @@ li button {
         min-width:inherit;
     }
 
+    
+
+
+
     /* --------Slideshow---------- */
     * {
         box-sizing: border-box
@@ -345,6 +349,13 @@ li button {
     #products {
         min-height: 3500px;
     }
+
+    .btn_discount {
+        margin-left: -80px;
+    }
+    .campaign {
+        font-size: 14px;
+    } 
 }
 
 @media only screen and (min-width: 500px) {
@@ -376,9 +387,17 @@ li button {
         min-height: 3500px;
     }
 
-    .card{
-        max-width:520px;
+    .card {
+        max-width: 520px;
     }
+
+    .btn_discount {
+        margin-left: -80px;
+    }
+    .campaign {
+        visibility:visible;
+        font-size: 14px;
+    } 
 }
 
 
@@ -407,6 +426,14 @@ li button {
         min-height: 1600px;
     }
 
+    .btn_discount {
+        margin: 0px;
+    }
+
+    .campaign {    
+      visibility: hidden;  
+    } 
+
     /*.prev {
         left: 0px;
     }
@@ -427,6 +454,10 @@ li button {
     #products {
         min-height: 1600px;
     }
+
+    .campaign {
+        visibility:hidden;
+    }   
 }
 
 @media only screen and (min-width: 1000px) {
@@ -440,6 +471,10 @@ li button {
     #products {
         min-height: 1600px;
     }
+    .campaign {
+        visibility: visible;
+        font-size: 14px;
+    } 
 }
 
 @media only screen and (min-width: 1100px) {
@@ -453,6 +488,10 @@ li button {
     #products {
         min-height: 1600px;
     }
+    .campaign {
+        visibility: visible;
+        font-size: 14px;
+    } 
 }
 
 @media only screen and (min-width: 1200px) {
@@ -475,6 +514,11 @@ li button {
         min-height: 1600px;
     }
 
+    .campaign {
+        visibility: visible;
+        font-size: 14px;
+    } 
+
 }
 
 @media only screen and (min-width: 1400px) {
@@ -492,4 +536,8 @@ li button {
     #products {
         min-height: 1600px;
     }
+    .campaign {
+        visibility: visible;
+        font-size: 14px;
+    } 
 }
