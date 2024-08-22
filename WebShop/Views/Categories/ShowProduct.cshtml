@@ -48,9 +48,13 @@
                       {
                          <h5 class="card-text">@item.Price kr</h5>
                       }
-                     <div class="mt-auto" style="clear:both">
-                        <a href="#" id="cart-btn" class="btn btn-dark" style="max-width:200px">Lägg i varukorgen</a>
-                      </div>
+                      
+                       <div class="mt-auto" style="clear:both">
+                            <form class="cartAdd" asp-controller="Cart" asp-action="AddToCart" method="post" asp-route-id="@item.Id">
+                              <input type="submit"  value="Lägg i varukorgen" href="#" id="cart-btn" class="btn btn-dark" style="max-width:200px" />
+                           </form>  
+                       </div>
+               
                     </div>
                 </div>
               </div>

@@ -5,9 +5,10 @@
 
     @if (SignInManager.IsSignedIn(User))
     {
-       <div class="collapse navbar-collapse justify-content-end"  id="login-dropdown">    
-         <ul class="navbar-nav">
-            <a class="d-flex" asp-area="" asp-controller="Home" asp-action="Index"><i class="bi bi-cart" style="font-size:2rem;color:gray;"></i></a>
+       <div class="collapse navbar-collapse justify-content-end"  id="login-dropdown">
+           <input class="hid2" value="" type="hidden" />
+           <ul class="navbar-nav">
+            <a class="d-flex cart-cont" asp-area="" asp-controller="Cart" asp-action="Index"><img src="~/Images/cart_inside_1.png" width="23px" height="23px" style="position:relative;left:45px;bottom:2px;visibility:visible" /><i class="bi bi-cart" style="font-size:2rem;color:gray;"></i></a>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Konto
@@ -29,9 +30,10 @@
     }
     else
     {
-      <div class="collapse navbar-collapse justify-content-end" id="login-dropdown">     
-        <ul class="navbar-nav">
-            <a class="d-flex" asp-area="" asp-controller="Home" asp-action="Index" style="margin-right:0px"><i class="bi bi-cart" style="font-size:2rem;color:gray;"></i></a>
+      <div class="collapse navbar-collapse justify-content-end" id="login-dropdown">
+          <input class="hid2" value="" type="hidden" />
+          <ul class="navbar-nav">
+            <a class="d-flex cart-cont" asp-area="" asp-controller="Cart" asp-action="Index" style="margin-right:0px"><img src="~/Images/cart_inside_1.png" width="23px" height="23px" style="position:relative;left:45px;bottom:2px;visibility:visible" /><i class="bi bi-cart" style="font-size:2rem;color:gray;"></i></a>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Logga in

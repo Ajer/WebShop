@@ -355,7 +355,10 @@ li button {
     }
     .campaign {
         font-size: 14px;
-    } 
+    }
+    .cart-cont {
+        margin-left: -20px;
+    }
 }
 
 @media only screen and (min-width: 500px) {
@@ -397,7 +400,56 @@ li button {
     .campaign {
         visibility:visible;
         font-size: 14px;
-    } 
+    }
+    .cart-cont{
+        margin-left:-20px;
+    }
+}
+
+@media only screen and (min-width: 576px) {
+    html {
+        font-size: 16px;
+    }
+
+    .header_slogan {
+        margin-left: -45px;
+    }
+
+    .myfooter_col {
+        margin-right: 70px;
+    }
+
+    .mycats {
+        margin-bottom: 30px;
+    }
+
+    .prev {
+        margin-left: 50px;
+    }
+
+    .next {
+        margin-right: 50px;
+    }
+
+    #products {
+        min-height: 4700px; /*---  ---*/
+    }
+
+    .card {
+        max-width: 520px;
+    }
+
+    .btn_discount {
+        margin-left: -80px;
+    }
+
+    .campaign {
+        visibility: visible;
+        font-size: 14px;
+    }
+    .cart-cont {
+        margin-left: 0px;
+    }
 }
 
 
