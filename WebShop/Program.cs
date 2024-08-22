@@ -14,12 +14,13 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddDistributedMemoryCache();        // Session
+builder.Services.AddDistributedMemoryCache();        // Session : change to sql-server in real app which survives app-close
 
 builder.Services.AddSession(opts =>                  // Session
 {
-    opts.IdleTimeout = TimeSpan.FromMinutes(30);
+    opts.IdleTimeout = TimeSpan.FromMinutes(30);       // change time in real app
     opts.Cookie.IsEssential = true;
+    opts.Cookie.SecurePolicy = CookieSecurePolicy.Always;   // Only https session requests
 });
 
 var app = builder.Build();
