@@ -1,7 +1,83 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@model WebShop.Dto.CartDto
+
+<section id='cartSection' style="margin-top:60px;min-height:800px">
+  @if(Model.Cart.Lines.Count==0)
+  {
+    <div class="container-fluid">     
+        <div class="col">
+            <div class="col-12 d-flex justify-content-center align-items-center">
+                  <h4 class="text-center">Din Kundvagn är tom</h4>         
+             </div>
+             <div class="col-12 d-flex justify-content-center align-items-center mt-4">
+                    <a asp-controller="Home" asp-action="Index" class="btn btn-dark">Fortsätt handla</a>
+             </div>              
+        </div>
+    </div>
+  }
+  else
+  {
+    <h4>Din Kundvagn (@Model.TotQuantityInCart produkter)</h4>
+    <div class="container">     
+        <div class="row mt-4">
+            <div class="col-12 col-xl-8  d-flex justify-content-center align-items-center">
+               <table class="table">
+                 <tbody>
+                   @foreach(var line in Model.Cart.Lines)
+                   {
+                       <tr>
+                         <td class="text-left" style="font-weight:normal">@line.Product.Name</td>
+
+                         <td class="text-center">@line.Quantity
+                         
+                         </td>
+
+                            @{
+                                double dp = 0;
+                                double p = 0;
+                                if (line.Product.IsDiscount)
+                                {
+                                    p = (double)line.Product.Price;
+                                    dp = (double)line.Product.DiscountPrice;
+                                    <td style="text-align:right"></td>
+                                    <td style="text-align:right;font-size:18px;font-weight:bold;"><span style="text-decoration:line-through">@Url.Content(p.ToString()) .-</span>&nbsp;&nbsp;&nbsp;@Url.Content(dp.ToString()) .-</td>
+                                    // <td class="text-right" style="font-size:18px;font-weight:bold">@Url.Content(dp.ToString()) .-</td>
+                                }
+                                else
+                                {
+                                   p = (double)line.Product.Price;
+                                   <td style="text-align:right"></td>
+                                   <td style="text-align:right;font-size:18px;font-weight:bold;">@Url.Content(p.ToString()) .-</td>
+                                }
+                            }
+
+                       </tr>
+                   }
+                 </tbody>
+               </table>                
+            </div>         
+            <div class="col-12 col-xl-3 d-flex justify-content-center ms-2" style="background-color:#f2f2f2;border-radius:4px">
+               <div class="container">
+                
+                    <p class="mt-3" style="font-weight:bold">Orderöversikt</p>
+                    <hr style="color:black"/>
+                        @{
+                            var t = Model.Cart.CartTotValue();
+                            var m = t * 0.3;
+                        }
+                      <div class="row">
+                         <div class="col-md-6"><p>Totalbelopp</p></div>
+                         <div class="col-md-6" style="font-size:18px;font-weight:bold;text-align:right"><p>@Url.Content(t.ToString()) .-</p></div>
+                      </div>
+                      <div class="row">
+                            <div class="col-md-6"><p>Moms</p></div>
+                            <div class="col-md-6" style="font-size:18px;font-weight:bold;text-align:right"><p>@Url.Content(m.ToString()) .-</p></div>
+                      </div>
+                
+               </div>
+            </div>
+         </div>
+      </div>
+   }
+  </section>
 }
 
-<h1>Cart</h1>

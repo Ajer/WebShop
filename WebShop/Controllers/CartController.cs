@@ -19,9 +19,17 @@ namespace WebShop.Controllers
             _context = context;
         }
 
+        // Cart overview
         public IActionResult Index()
         {
-            return View();
+            CartDto cartDto = new CartDto();
+
+            Cart c = HttpContext.Session.GetJson<Cart>("cart") ?? new Cart();
+            int? n = HttpContext.Session.GetJson<int>("prodsInCart");
+            cartDto.Cart = c;
+            cartDto.TotQuantityInCart = n;
+
+            return View(cartDto);
         }
 
         public async Task<IActionResult> AddToCart(int? id)
