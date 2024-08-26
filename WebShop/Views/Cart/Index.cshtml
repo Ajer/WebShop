@@ -1,6 +1,6 @@
 ﻿@model WebShop.Dto.CartDto
 
-<section id='cartSection' style="margin-top:60px;min-height:800px">
+<section id='cartSection' style="margin-top:60px;">
   @if(Model.Cart.Lines.Count==0)
   {
     <div class="container-fluid">     
@@ -19,7 +19,7 @@
     <h4>Din Kundvagn (@Model.TotQuantityInCart produkter)</h4>
     <div class="container">     
         <div class="row mt-4">
-            <div class="col-12 col-xl-8  d-flex justify-content-center align-items-center">
+            <div class="col-12 col-xl-8  d-flex justify-content-center align-items-start">  
                <table class="table">
                  <tbody>
                    @foreach(var line in Model.Cart.Lines)
@@ -55,8 +55,8 @@
                  </tbody>
                </table>                
             </div>         
-            <div class="col-12 col-xl-3 d-flex justify-content-center ms-2" style="background-color:#f2f2f2;border-radius:4px">
-               <div class="container">
+            <div class="col-12 col-xl-3 d-flex justify-content-between ms-2" style="background-color:#f2f2f2;border-radius:4px">
+                <div class="container">
                 
                     <p class="mt-3" style="font-weight:bold">Orderöversikt</p>
                     <hr style="color:black"/>
@@ -64,15 +64,22 @@
                             var t = Model.Cart.CartTotValue();
                             var m = t * 0.3;
                         }
-                      <div class="row">
-                         <div class="col-md-6"><p>Totalbelopp</p></div>
-                         <div class="col-md-6" style="font-size:18px;font-weight:bold;text-align:right"><p>@Url.Content(t.ToString()) .-</p></div>
-                      </div>
-                      <div class="row">
-                            <div class="col-md-6"><p>Moms</p></div>
-                            <div class="col-md-6" style="font-size:18px;font-weight:bold;text-align:right"><p>@Url.Content(m.ToString()) .-</p></div>
-                      </div>
-                
+                        <div class="row">
+                            <div class="col-6"><p>Totalbelopp</p></div>
+                            <div class="col-6" style="font-size:18px;font-weight:bold;text-align:right"><p>@Url.Content(t.ToString()) .-</p></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6"><p>Varav Moms</p></div>
+                            <div class="col-6" style="font-size:18px;font-weight:bold;text-align:right"><p>@Url.Content(m.ToString()) .-</p></div>
+                        </div>
+                        <hr />
+                        <div class="row">
+                            <div class="col-6"style="font-weight:bold"><p>Totalbelopp (SEK)</p></div>
+                            <div class="col-6" style="font-size:18px;font-weight:bold;text-align:right"><p>@Url.Content(t.ToString()) .-</p></div>
+                        </div>
+                        <div>
+                          <a class="btn" href="#" style="width:100%;border-radius:4px;margin-bottom:20px;margin-top:30px;background-color:forestgreen;color:white">Till Kassan</a>
+                        </div>
                </div>
             </div>
          </div>

@@ -315,221 +315,258 @@ li button {
 
 /* -------- media-queries -----------*/
 
-@media only screen and (min-width: 300px) {
-    html {
-        font-size: 16px;
-    }
-
-    .header_slogan {
-        margin-left: -40px;
-    }
-
-    .myfooter_col {
-        margin-right: 70px;
-    }
-
-    #home_index {
-        min-height: 1600px;
-    }
-
-    #register, #login {
-        min-height: 1400px;
-    }
-    .mycats {
-        margin-bottom: 30px;
-    }
-
-    .prev {
-        margin-left: 80px;
-    }
-
-    .next {
-        margin-right: 80px;
-    }
-    #products {
-        min-height: 4700px;
-    }
-
-    .btn_discount {
-        margin-left: -80px;
-    }
-    .campaign {
-        font-size: 14px;
-    }
-    .cart-cont {
-        margin-left: -20px;
-    }
-}
-
-@media only screen and (min-width: 500px) {
-    html {
-        font-size: 16px;
-    }
-
-    .header_slogan {
-        margin-left: -45px;
-    }
-
-    .myfooter_col {
-        margin-right: 70px;
-    }
-
-    .mycats {
-        margin-bottom: 30px;
-    }
-
-    .prev {
-        margin-left: 50px;
-    }
-
-    .next {
-        margin-right: 50px;
-    }
-
-    #products {
-        min-height: 4700px;    /*---  ---*/
-    }
-
-    .card {
-        max-width: 520px;
-    }
-
-    .btn_discount {
-        margin-left: -80px;
-    }
-    .campaign {
-        visibility:visible;
-        font-size: 14px;
-    }
-    .cart-cont{
-        margin-left:-20px;
-    }
-}
-
-@media only screen and (min-width: 576px) {
-    html {
-        font-size: 16px;
-    }
-
-    .header_slogan {
-        margin-left: -45px;
-    }
-
-    .myfooter_col {
-        margin-right: 70px;
-    }
-
-    .mycats {
-        margin-bottom: 30px;
-    }
-
-    .prev {
-        margin-left: 50px;
-    }
-
-    .next {
-        margin-right: 50px;
-    }
-
-    #products {
-        min-height: 4700px; /*---  ---*/
-    }
-
-    .card {
-        max-width: 520px;
-    }
-
-    .btn_discount {
-        margin-left: -80px;
-    }
-
-    .campaign {
-        visibility: visible;
-        font-size: 14px;
-    }
-    .cart-cont {
-        margin-left: 0px;
-    }
-}
 
 
-@media only screen and (min-width: 768px) {
-    html {
-        font-size: 16px;
+    @media only screen and (min-width: 300px) {
+        html {
+            font-size: 16px;
+        }
+
+        .header_slogan {
+            margin-left: -40px;
+        }
+
+        .myfooter_col {
+            margin-right: 70px;
+        }
+
+        #home_index {
+            min-height: 1600px;
+        }
+
+        #register, #login {
+            min-height: 1400px;
+        }
+
+        .mycats {
+            margin-bottom: 30px;
+        }
+
+        .prev {
+            margin-left: 80px;
+        }
+
+        .next {
+            margin-right: 80px;
+        }
+
+        #products {
+            min-height: 4700px;
+        }
+
+        .btn_discount {
+            margin-left: -80px;
+        }
+
+        .campaign {
+            font-size: 14px;
+        }
+
+        .cart-cont {
+            margin-left: -20px;
+        }
+
+        #cartSection {
+            min-height: 2200px
+        }
     }
 
-    #home_index {
-        min-height: 1000px;
+    @media only screen and (min-width: 500px) {
+        html {
+            font-size: 16px;
+        }
+
+        .header_slogan {
+            margin-left: -45px;
+        }
+
+        .myfooter_col {
+            margin-right: 70px;
+        }
+
+        .mycats {
+            margin-bottom: 30px;
+        }
+
+        .prev {
+            margin-left: 50px;
+        }
+
+        .next {
+            margin-right: 50px;
+        }
+
+        #products {
+            min-height: 4700px; /*---  ---*/
+        }
+
+        .card {
+            max-width: 520px;
+        }
+
+        .btn_discount {
+            margin-left: -80px;
+        }
+
+        .campaign {
+            visibility: visible;
+            font-size: 14px;
+        }
+
+        .cart-cont {
+            margin-left: -20px;
+        }
+
+        #cartSection {
+            min-height: 2000px
+        }
     }
 
-    #register, #login {
-        min-height: 850px;
+    @media only screen and (min-width: 576px) {
+        html {
+            font-size: 16px;
+        }
+
+        .header_slogan {
+            margin-left: -45px;
+        }
+
+        .myfooter_col {
+            margin-right: 70px;
+        }
+
+        .mycats {
+            margin-bottom: 30px;
+        }
+
+        .prev {
+            margin-left: 50px;
+        }
+
+        .next {
+            margin-right: 50px;
+        }
+
+        #products {
+            min-height: 4700px; /*---  ---*/
+        }
+
+        .card {
+            max-width: 520px;
+        }
+
+        .btn_discount {
+            margin-left: -80px;
+        }
+
+        .campaign {
+            visibility: visible;
+            font-size: 14px;
+        }
+
+        .cart-cont {
+            margin-left: 0px;
+        }
+
+        #cartSection {
+            min-height: 2000px
+        }
     }
 
-    .header_slogan {
-        margin-left: -50px;
-    }
 
-    .mycats {
-        margin-bottom: 30px;
-    }
+    @media only screen and (min-width: 768px) {
+        html {
+            font-size: 16px;
+        }
 
-    #products {
-        min-height: 1600px;
-    }
+        #home_index {
+            min-height: 1000px;
+        }
 
-    .btn_discount {
-        margin: 0px;
-    }
+        #register, #login {
+            min-height: 850px;
+        }
 
-    .campaign {    
-      visibility: hidden;  
-    }
+        .header_slogan {
+            margin-left: -50px;
+        }
 
-    .card h5 {
-        font-size: 15px;
-    }
-    .card_img {
-        max-width: 200px !important;
-    }
+        .mycats {
+            margin-bottom: 30px;
+        }
 
-    /*.prev {
+        #products {
+            min-height: 1600px;
+        }
+
+        .btn_discount {
+            margin: 0px;
+        }
+
+        .campaign {
+            visibility: hidden;
+        }
+
+        .card h5 {
+            font-size: 15px;
+        }
+
+        .card_img {
+            max-width: 200px !important;
+        }
+
+        #cartSection {
+            min-height: 1200px
+        }
+
+        /*.prev {
         left: 0px;
     }
 
     .next {
        right: 0px;
     }*/
-}
-
-@media only screen and (min-width: 900px) {
-    .header_slogan {
-        margin-left: -55px;
     }
 
-    .mycats {
-        margin-bottom: 30px;
-    }
-    #products {
-        min-height: 1600px;
+    @media only screen and (min-width: 900px) {
+        .header_slogan {
+            margin-left: -55px;
+        }
+
+        .mycats {
+            margin-bottom: 30px;
+        }
+
+        #products {
+            min-height: 1600px;
+        }
+
+        .campaign {
+            visibility: hidden;
+        }
+
+        .card h5 {
+            font-size: 15px;
+        }
+
+        .card_img {
+            max-width: 200px !important;
+        }
+
+        #cartSection {
+            min-height: 1200px
+        }
     }
 
-    .campaign {
-        visibility:hidden;
-    }
-    .card h5 {
-        font-size: 15px;
-    }
-    .card_img {
-        max-width: 200px !important;
-    }
-}
+    @media only screen and (min-width: 995px) {
+        .card h5 {
+            font-size: 15px;
+        }
 
-@media only screen and (min-width: 995px) {
-    .card h5{
-        font-size:15px;
+        #cartSection {
+            min-height: 1200px
+        }
     }
-}
 
     @media only screen and (min-width: 1000px) {
         .header_slogan {
@@ -548,11 +585,17 @@ li button {
             visibility: visible;
             font-size: 14px;
         }
+
         .card h5 {
             font-size: 18px;
         }
+
         .card_img {
             max-width: 200px !important;
+        }
+
+        #cartSection {
+            min-height: 1200px
         }
     }
 
@@ -573,8 +616,13 @@ li button {
             visibility: visible;
             font-size: 14px;
         }
+
         .card_img {
             max-width: 200px !important;
+        }
+
+        #cartSection {
+            min-height: 1200px
         }
     }
 
@@ -602,8 +650,13 @@ li button {
             visibility: visible;
             font-size: 14px;
         }
+
         .card_img {
             max-width: 200px !important;
+        }
+
+        #cartSection {
+            min-height: 1200px
         }
     }
 
@@ -628,7 +681,12 @@ li button {
             visibility: visible;
             font-size: 14px;
         }
+
         .card_img {
             max-width: 250px !important;
+        }
+
+        #cartSection {
+            min-height: 1000px
         }
     }
