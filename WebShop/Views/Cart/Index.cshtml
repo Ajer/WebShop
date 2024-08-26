@@ -24,10 +24,30 @@
                  <tbody>
                    @foreach(var line in Model.Cart.Lines)
                    {
+                       
                        <tr>
                          <td class="text-left" style="font-weight:normal">@line.Product.Name</td>
+                         
+                         <td class="text-center">
+                             <div class="input-group" style="width:120px;margin-top:-5px">
+                                @{
+                                    string qStr = (line.Quantity < 10) ? " " + line.Quantity.ToString() : line.Quantity.ToString();
+                                }
+                                <a id="increase_cartline" class="input-group-text" href="#" style="background-color:#fafafa">
+                                   <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 14 14">
+                                           <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2" />
+                                   </svg>
+                                </a>
+                                <input type="text" class="form-control" value="@Url.Content(qStr)" style="padding-left:10px;padding-right:10px;background-color:white">
+                                <a id="decrease_cartline" class="input-group-text" href="#" style="background-color:#fafafa">
+                                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-dash-lg" viewBox="0 0 14 14">
+                                            <path fill-rule="evenodd" d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8" />
+                                     </svg>
+                                </a>
+                             </div>
+                          </td>
 
-                                    <td class="text-center"><i class="bi bi-plus-square" style="font-size:1rem;color:gray;"></i>@line.Quantity</td>
+                            @* <td class="text-center"><a href="#"><i class="bi bi-plus-square" style="font-size:1.3rem;color:gray;margin-right:10px"></i></a>@line.Quantity<a href="#"><i class="bi bi-dash-square" style="font-size:1.3rem;color:gray;margin-left:10px"></i></a></td> *@
 
                             @{
                                 double dp = 0;
