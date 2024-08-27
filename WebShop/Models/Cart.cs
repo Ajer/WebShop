@@ -58,7 +58,7 @@
         }
 
         // Removes complete line
-        public void RemoveLineByProducts(Product prod)
+        public void RemoveLineByProduct(Product prod)
         {
             Lines.RemoveAll(l => l.Product.Id == prod.Id);
         }
@@ -81,6 +81,30 @@
             return sum;
         }
 
+        public double CartLineDiscountValue(CartLine line)
+        {
+            double sum = 0;
+
+            if (line.Product.IsDiscount)
+            {
+                sum = (double)line.Product.DiscountPrice * line.Quantity;
+            }
+            else
+            {
+                sum = (double)line.Product.Price * line.Quantity;   // Error: return normal price
+            }
+            return sum;
+        }
+
+
+        public double CartLineOrigValue(CartLine line)
+        {
+            double sum = 0;
+
+            sum = (double)line.Product.Price * line.Quantity;
+           
+            return sum;
+        }
 
 
         // Empties complete cart by removing all lines

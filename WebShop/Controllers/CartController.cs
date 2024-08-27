@@ -32,11 +32,18 @@ namespace WebShop.Controllers
             return View(cartDto);
         }
 
+        //public IActionResult Checkout()
+        //{
+        //    return View();
+        //}
+
+
+        // Adds the product with id = Product.Id to the cart
         public async Task<IActionResult> AddToCart(int? id)
-        {      
+        {
             var p = await _context.Products.Where(p => p.Id == id).FirstOrDefaultAsync();
 
-     
+
             if (p != null)
             {
                 Cart c = HttpContext.Session.GetJson<Cart>("cart") ?? new Cart();
@@ -44,7 +51,7 @@ namespace WebShop.Controllers
                 HttpContext.Session.SetJson("cart", c);
 
                 int? n = HttpContext.Session.GetJson<int>("prodsInCart");
-                if (n!=null)
+                if (n != null)
                 {
                     n = n + 1;
                 }
@@ -52,14 +59,49 @@ namespace WebShop.Controllers
                 {
                     n = 1;
                 }
-                HttpContext.Session.SetJson("prodsInCart",n);
+                HttpContext.Session.SetJson("prodsInCart", n);
 
                 string t = (string)HttpContext.Request.Headers.Referer;
                 if (t != null)
                 {
-                    return RedirectToAction("ShowProduct", "Categories", new { id = p.CategoryId });
+                    if (!t.EndsWith("/Cart"))
+                    {
+                        return RedirectToAction("ShowProduct", "Categories", new { id = p.CategoryId });
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index");
+                    }
                 }
-                
+            }
+            return RedirectToAction("Index");
+        }
+
+
+        public async Task<IActionResult> RemoveOneFromCart(int? id)
+        {
+            var p = await _context.Products.Where(p => p.Id == id).FirstOrDefaultAsync();
+
+
+            if (p != null)
+            {
+                Cart c = HttpContext.Session.GetJson<Cart>("cart") ?? new Cart();
+
+                c.RemoveOneItem(p);
+                HttpContext.Session.SetJson("cart", c);
+
+                int? n = HttpContext.Session.GetJson<int>("prodsInCart");
+                if (n != null)
+                {
+                    n = n - 1;
+                }
+
+                HttpContext.Session.SetJson("prodsInCart", n);
+
+
+                return RedirectToAction("Index");
+
+
             }
             return RedirectToAction("Index");
         }

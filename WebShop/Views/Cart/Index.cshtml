@@ -8,8 +8,8 @@
             <div class="col-12 d-flex justify-content-center align-items-center">
                   <h4 class="text-center">Din Kundvagn är tom</h4>         
              </div>
-             <div class="col-12 d-flex justify-content-center align-items-center mt-4">
-                    <a asp-controller="Home" asp-action="Index" class="btn btn-dark">Fortsätt handla</a>
+             <div class="col-12 d-flex justify-content-center align-items-center" style="margin-top:30px">
+                    <a asp-controller="Home" asp-action="Index" class="btn" style="background-color:darkblue;color:white">Fortsätt handla</a>
              </div>              
         </div>
     </div>
@@ -33,13 +33,13 @@
                                 @{
                                     string qStr = (line.Quantity < 10) ? " " + line.Quantity.ToString() : line.Quantity.ToString();
                                 }
-                                <a id="increase_cartline" class="input-group-text" href="#" style="background-color:#fafafa">
+                                <a id="increase_cartline" asp-controller="Cart" asp-action="AddToCart" asp-route-id="@line.Product.Id" class="input-group-text" style="background-color:#fafafa">
                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 14 14">
                                            <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2" />
                                    </svg>
                                 </a>
-                                <input type="text" class="form-control" value="@Url.Content(qStr)" style="padding-left:10px;padding-right:10px;background-color:white">
-                                <a id="decrease_cartline" class="input-group-text" href="#" style="background-color:#fafafa">
+                                <input type="text" class="form-control" value="@Url.Content(qStr)" readonly style="padding-left:10px;padding-right:10px;background-color:white">
+                                <a id="decrease_cartline" asp-controller="Cart" asp-action="RemoveOneFromCart" asp-route-id="@line.Product.Id" class="input-group-text" style="background-color:#fafafa">
                                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-dash-lg" viewBox="0 0 14 14">
                                             <path fill-rule="evenodd" d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8" />
                                      </svg>
@@ -47,24 +47,27 @@
                              </div>
                           </td>
 
-                            @* <td class="text-center"><a href="#"><i class="bi bi-plus-square" style="font-size:1.3rem;color:gray;margin-right:10px"></i></a>@line.Quantity<a href="#"><i class="bi bi-dash-square" style="font-size:1.3rem;color:gray;margin-left:10px"></i></a></td> *@
-
+                
                             @{
-                                double dp = 0;
-                                double p = 0;
+                                
+                                double dpLineTot = 0;
+                                double pLineTot = Model.Cart.CartLineOrigValue(line);
+
+
                                 if (line.Product.IsDiscount)
                                 {
-                                    p = (double)line.Product.Price;
-                                    dp = (double)line.Product.DiscountPrice;
+                               
+                                    dpLineTot = Model.Cart.CartLineDiscountValue(line); 
+
                                     <td style="text-align:right"></td>
-                                    <td style="text-align:right;font-size:18px;font-weight:bold;"><span style="text-decoration:line-through">@Url.Content(p.ToString()) .-</span>&nbsp;&nbsp;&nbsp;@Url.Content(dp.ToString()) .-</td>
+                                    <td style="text-align:right;font-size:18px;font-weight:bold;"><span style="text-decoration:line-through">@Url.Content(pLineTot.ToString()) .-</span>&nbsp;&nbsp;&nbsp;@Url.Content(dpLineTot.ToString()) .-</td>
                                     // <td class="text-right" style="font-size:18px;font-weight:bold">@Url.Content(dp.ToString()) .-</td>
                                 }
                                 else
                                 {
-                                   p = (double)line.Product.Price;
+          
                                    <td style="text-align:right"></td>
-                                   <td style="text-align:right;font-size:18px;font-weight:bold;">@Url.Content(p.ToString()) .-</td>
+                                   <td style="text-align:right;font-size:18px;font-weight:bold;">@Url.Content(pLineTot.ToString()) .-</td>
                                 }
                             }
 
@@ -81,6 +84,7 @@
                         @{
                             var t = Model.Cart.CartTotValue();
                             var m = t * 0.3;
+                            m = Math.Round(m, 2);
                         }
                         <div class="row">
                             <div class="col-6"><p>Totalbelopp</p></div>
@@ -88,7 +92,7 @@
                         </div>
                         <div class="row">
                             <div class="col-6"><p>Varav Moms</p></div>
-                            <div class="col-6" style="font-size:18px;font-weight:bold;text-align:right"><p>@Url.Content(m.ToString()) .-</p></div>
+                            <div class="col-6" style="font-size:18px;font-weight:bold;text-align:right"><p>@Url.Content(string.Format(m.ToString("F"))) .-</p></div>
                         </div>
                         <hr />
                         <div class="row">
@@ -96,7 +100,7 @@
                             <div class="col-6" style="font-size:18px;font-weight:bold;text-align:right"><p>@Url.Content(t.ToString()) .-</p></div>
                         </div>
                         <div>
-                          <a class="btn" href="#" style="width:100%;border-radius:4px;margin-bottom:20px;margin-top:30px;background-color:forestgreen;color:white">Till Kassan</a>
+                          <a class="btn" asp-controller="Cart" asp-action="Checkout" style="width:100%;border-radius:4px;margin-bottom:20px;margin-top:30px;background-color:forestgreen;color:white">Till Kassan</a>
                         </div>
                </div>
             </div>
