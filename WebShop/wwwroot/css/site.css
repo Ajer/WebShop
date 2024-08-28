@@ -32,7 +32,7 @@ body {
 #backToLoginpage:focus,
 #forgot-pass:focus,
 #register-submit:focus,
-#login-submit:focus, .form-control:focus{  
+#login-submit:focus, .form-control:focus,.form-select:focus{  
     box-shadow: 0 0 0 0.1rem black, 0 0 0 0.25rem #fff;
 }
 
@@ -41,7 +41,7 @@ body {
     box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #fff;
 }
 
-#srch-field:focus {
+#srch-field:focus, .cartline_quantity:focus{
     box-shadow: 0 0 0 0.05rem white;
     border: 1px solid gray;
 }
@@ -50,6 +50,13 @@ body {
     border: 1px solid gray;
  }
 
+#order_form label{
+    font-weight:normal;
+}
+
+#order_form input {
+    margin-bottom:10px;
+}
 
 .myNav, .social_link {
     margin-top: -20px;
@@ -687,6 +694,10 @@ li button {
         }
 
         #cartSection {
-            min-height: 1000px
+            min-height: 1000px;
+        }
+
+        #checkoutSection{
+            min-height: 1200px;
         }
     }

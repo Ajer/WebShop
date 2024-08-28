@@ -1,0 +1,118 @@
+﻿@model WebShop.Dto.CheckoutDto
+
+@{
+    ViewData["Title"] = "MediaSales - Checkout";
+}
+
+<section id='checkoutSection' style="margin-top:30px;">
+    <div class="container">
+        <div class="row mt-4">
+             
+     
+             <div class="col-12 col-xl-8  d-flex justify-content-center align-items-start">
+                 
+               <div class="container mt-4">
+                   <div class="col">
+                        <h5>1.Vem skall ordern skickas till ?</h5>
+                        <form  asp-controller="Cart" asp-action="Checkout"  id="order_form" class="form">
+                          <label>Email *</label>
+                          <input type="email" class="form-control" id="checkout_email" name="email" />
+
+                          <label>Förnamn *</label>
+                          <input type="text" class="form-control" id="checkout_firstname" name="firstname" />
+
+                          <label>Efternamn *</label>
+                          <input type="text" class="form-control" id="checkout_lastname" name="lastname" />
+
+                          <label>Address *</label>
+                          <input type="text" class="form-control" id="checkout_adress" name="adress" />
+
+                          <label>Postnummer *</label>
+                          <input type="text" class="form-control" id="checkout_zip" name="zip" />
+
+                          <label>Stad *</label>
+                          <input type="text" class="form-control" id="checkout_city" name="city" />
+                          
+                          <label>Land *</label>
+                          <select class="form-select" name="country">
+                                <option>Sverige</option>
+                                <option>Norge</option>
+                                <option>Danmark</option>
+                                <option>Finland</option>
+                          </select>
+                          <div class="mt-4">
+                            <h5>2.Välj Fraktalternativ nedan *</h5>
+                            <form asp-controller="Cart" asp-action="ChangeFreight" method="post">
+                               <select id="freight_option" name="freight_option" class="form-select">
+                                <option value="0">PostNord Standard 2-3 dagar 0:-</option>
+                                <option value="19">DBSchenker Standard 2-3 dagar 19:-</option>
+                                <option value="39">Postnord Express 1 dag 39:-</option>
+                                <option value="49">DBSchenker Express 1 dag 49:-</option>                             
+                              </select>
+                            </form>
+                          </div>
+                            <div class="mt-4">
+                                <h5>3.Välj Betalningsalternativ nedan *</h5>
+                                <select class="form-select" id="payment_method" name="payment_method">
+                                    <option>Klarna Direktbetalning</option>
+                                    <option>Faktura 30 dagar</option>
+                                    <option>Swish</option>
+                                </select>
+                            </div>
+                            <div>
+                                <input type="submit" class="btn" style="width:100%;border-radius:4px;margin-bottom:20px;margin-top:30px;background-color:forestgreen;color:white" value="Genomför order" disabled= />
+                            </div>
+                        </form>
+                   </div>
+               </div>
+             </div>
+
+
+             <div class="col-12 col-xl-3 d-flex justify-content-between ms-2" style="background-color:#f2f2f2;border-radius:4px">
+                  <div class="container">
+
+                    <p class="mt-3" style="font-weight:bold">Orderöversikt (@Model.TotQuantityInCart produkter)</p>
+                    <hr style="color:black" />
+                    @{
+                        var t = Model.Cart.CartTotValue();
+                        var m = t * 0.3;
+
+                        int comp = (int)m;
+                        if (comp != m)
+                        {
+                            m = Math.Round(m, 2);
+                        }
+
+
+                    }
+                    <div class="row">
+                        <div class="col-6"><p>Totalbelopp</p></div>
+                        <div class="col-6" style="font-size:18px;font-weight:bold;text-align:right"><p>@Url.Content(t.ToString()) .-</p></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6"><p>Varav Moms</p></div>
+                        <div class="col-6" style="font-size:18px;font-weight:bold;text-align:right"><p>@Url.Content(string.Format(m.ToString("F"))) .-</p></div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-6"><p>Fraktalternativ</p></div>
+                        <div class="col-6" style="font-size:18px;font-weight:bold;text-align:right"><p id="freight_cost">0 .-</p></div>
+                    </div>
+
+                    <hr />
+                    <div class="row">
+                        <div class="col-6" style="font-weight:bold"><p>Totalbelopp (SEK)</p></div>
+                        <div class="col-6" style="font-size:18px;font-weight:bold;text-align:right"><p id="tot_cost">@Model.TotOrderCost .-</p></div>
+                    </div>
+                    @* <div>
+                        <a class="btn" asp-controller="Cart" asp-action="Checkout" style="width:100%;border-radius:4px;margin-bottom:20px;margin-top:30px;background-color:forestgreen;color:white">Till Kassan</a>
+                    </div> *@
+                </div>
+             </div>
+        
+        </div>
+    </div>
+</section>
+
+
+

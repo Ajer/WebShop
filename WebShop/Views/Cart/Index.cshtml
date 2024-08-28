@@ -1,5 +1,10 @@
 ﻿@model WebShop.Dto.CartDto
 
+@{
+    ViewData["Title"] = "MediaSales - Kundvagn";
+}
+
+
 <section id='cartSection' style="margin-top:60px;">
   @if(Model.Cart.Lines.Count==0)
   {
@@ -38,7 +43,7 @@
                                            <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2" />
                                    </svg>
                                 </a>
-                                <input type="text" class="form-control" value="@Url.Content(qStr)" readonly style="padding-left:10px;padding-right:10px;background-color:white">
+                                <input type="text" class="form-control cartline_quantity" value="@Url.Content(qStr)" readonly style="padding-left:10px;padding-right:10px;background-color:white">
                                 <a id="decrease_cartline" asp-controller="Cart" asp-action="RemoveOneFromCart" asp-route-id="@line.Product.Id" class="input-group-text" style="background-color:#fafafa">
                                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-dash-lg" viewBox="0 0 14 14">
                                             <path fill-rule="evenodd" d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8" />
@@ -84,7 +89,14 @@
                         @{
                             var t = Model.Cart.CartTotValue();
                             var m = t * 0.3;
-                            m = Math.Round(m, 2);
+
+                            int comp = (int)m;
+                            if (comp != m)
+                            {
+                                m = Math.Round(m, 2);
+                            }
+
+                            
                         }
                         <div class="row">
                             <div class="col-6"><p>Totalbelopp</p></div>

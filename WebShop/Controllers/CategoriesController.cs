@@ -21,10 +21,10 @@ namespace WebShop.Controllers
         }
 
         // GET: Categories
-        public async Task<IActionResult> Index()
-        {
-            return View(await _context.Categories.ToListAsync());
-        }
+        //public async Task<IActionResult> Index()
+        //{
+        //    return View(await _context.Categories.ToListAsync());
+        //}
 
 
         // GET: Categories/ShowProduct/5

@@ -32,10 +32,57 @@ namespace WebShop.Controllers
             return View(cartDto);
         }
 
-        //public IActionResult Checkout()
-        //{
-        //    return View();
-        //}
+        // Get: Checkout overview
+        public IActionResult Checkout()
+        {
+            CheckoutDto checkoutDto = new CheckoutDto();
+
+            Cart c = HttpContext.Session.GetJson<Cart>("cart") ?? new Cart();
+            int? n = HttpContext.Session.GetJson<int>("prodsInCart");
+            double? tc = HttpContext.Session.GetJson<double>("totOrderCost");
+
+            checkoutDto.Cart = c;
+            checkoutDto.TotQuantityInCart = n;
+
+            if (checkoutDto.TotOrderCost !=null && checkoutDto.TotOrderCost==0)
+            {
+                checkoutDto.TotOrderCost = c.CartTotValue();  // init-value before freight is added
+            }
+            else if (checkoutDto.TotOrderCost != null && checkoutDto.TotOrderCost!=0)
+            {
+                checkoutDto.TotOrderCost = c.CartTotValue() + (double)tc;
+            }
+
+            return View(checkoutDto);
+        }
+
+        [HttpPost]    // Change freightcost and totOrderCost by ajax, sendback totOrderCost
+        public IActionResult ChangeFreight(string? selected_val)
+        {
+            double res = 0;
+            if (selected_val != null)
+            {
+                res = Convert.ToDouble(selected_val);
+
+
+                CheckoutDto checkoutDto = new CheckoutDto();
+
+                Cart c = HttpContext.Session.GetJson<Cart>("cart") ?? new Cart();
+                int? n = HttpContext.Session.GetJson<int>("prodsInCart");
+                double? tc = HttpContext.Session.GetJson<double>("totOrderCost");
+
+
+                checkoutDto.Cart = c;
+                checkoutDto.TotQuantityInCart = n;
+                checkoutDto.TotOrderCost = c.CartTotValue() + res;
+                HttpContext.Session.SetJson("totOrderCost", checkoutDto.TotOrderCost);
+                HttpContext.Session.SetJson("freightCost", res);
+
+                return Json(HttpContext.Session.GetJson<double>("totOrderCost"));
+            }
+            return Json(null);
+        }
+
 
 
         // Adds the product with id = Product.Id to the cart

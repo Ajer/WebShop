@@ -177,6 +177,30 @@
     //             this.submit();
     //         });
     //     });
+ 
+    $(document).ready(function () {
+        $('#freight_option').on('change', function (event) {
+            // var p = document.getElementById("freight_cost");
+            $('#freight_cost').html(this.value + "&nbsp;.-");
+            let _selectedValue = $(this).val();
+            let _data = { "selected_val": _selectedValue };
+            $.ajax({
+                type: "POST",
+                url: "/Cart/ChangeFreight/",
+                data: _data,
+                success: function (result) {
+                    if (result) {
+                        //alert(result);
+                        $('#tot_cost').html(result + "&nbsp;.-");
+                    }
+                    else { 
+                        alert('null') 
+                    }
+                }
+            });
+
+        });
+    });
 
 
     $(document).ready(function () {
