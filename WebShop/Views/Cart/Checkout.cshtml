@@ -8,37 +8,37 @@
     <div class="container">
         <div class="row mt-4">
              
-     
              <div class="col-12 col-xl-8  d-flex justify-content-center align-items-start">
                  
                <div class="container mt-4">
                    <div class="col">
                         <h5>1.Vem skall ordern skickas till ?</h5>
-                        <form  asp-controller="Cart" asp-action="Checkout"  id="order_form" class="form">
+                        <form id="order_form" class="form" asp-controller="Cart" asp-action="Order" method="post">
                           <label>Email *</label>
-                          <input type="email" class="form-control" id="checkout_email" name="email" />
-
+                          <input type="email" class="form-control" id="checkout_email" name="email" required />
+                            
                           <label>Förnamn *</label>
-                          <input type="text" class="form-control" id="checkout_firstname" name="firstname" />
-
+                          <input type="text" class="form-control" id="checkout_firstname" name="firstname" required />
+                        
                           <label>Efternamn *</label>
-                          <input type="text" class="form-control" id="checkout_lastname" name="lastname" />
-
+                          <input type="text" class="form-control" id="checkout_lastname" name="lastname" required />
+                       
                           <label>Address *</label>
-                          <input type="text" class="form-control" id="checkout_adress" name="adress" />
-
+                          <input type="text" class="form-control" id="checkout_adress" name="adress" required />
+                
                           <label>Postnummer *</label>
-                          <input type="text" class="form-control" id="checkout_zip" name="zip" />
-
+                          <input type="text" class="form-control" id="checkout_zip" name="zip" required />
+                            
                           <label>Stad *</label>
-                          <input type="text" class="form-control" id="checkout_city" name="city" />
+                          <input type="text" class="form-control" id="checkout_city" name="city" required />
+                                    
                           
                           <label>Land *</label>
                           <select class="form-select" name="country">
-                                <option>Sverige</option>
-                                <option>Norge</option>
-                                <option>Danmark</option>
-                                <option>Finland</option>
+                                <option value="Sweden">Sverige</option>
+                                <option value="Norway">Norge</option>
+                                <option value="Denmark">Danmark</option>
+                                <option value="Finland">Finland</option>
                           </select>
                           <div class="mt-4">
                             <h5>2.Välj Fraktalternativ nedan *</h5>
@@ -54,13 +54,14 @@
                             <div class="mt-4">
                                 <h5>3.Välj Betalningsalternativ nedan *</h5>
                                 <select class="form-select" id="payment_method" name="payment_method">
-                                    <option>Klarna Direktbetalning</option>
-                                    <option>Faktura 30 dagar</option>
-                                    <option>Swish</option>
+                                    <option value="1">Klarna Direktbetalning</option>
+                                    <option value="2">Faktura 30 dagar</option>
+                                    <option value="3">Kortbetalning Visa/Mastercard</option>
+                                    <option value="4">Swish</option>
                                 </select>
                             </div>
                             <div>
-                                <input type="submit" class="btn" style="width:100%;border-radius:4px;margin-bottom:20px;margin-top:30px;background-color:forestgreen;color:white" value="Genomför order" disabled= />
+                                <input type="submit" id="do_order" disabled class="btn" style="width:100%;border-radius:4px;margin-bottom:20px;margin-top:30px;background-color:forestgreen;color:white" value="Genomför order" />
                             </div>
                         </form>
                    </div>
@@ -82,8 +83,6 @@
                         {
                             m = Math.Round(m, 2);
                         }
-
-
                     }
                     <div class="row">
                         <div class="col-6"><p>Totalbelopp</p></div>
@@ -97,6 +96,7 @@
                     <div class="row">
                         <div class="col-6"><p>Fraktalternativ</p></div>
                         <div class="col-6" style="font-size:18px;font-weight:bold;text-align:right"><p id="freight_cost">0 .-</p></div>
+                        <p id="freight_alt" style="font-size:small;font-weight:normal;margin-top:-20px;margin-left:20px;">PostNord Standard 2-3 dagar 0:-</p>
                     </div>
 
                     <hr />
@@ -104,9 +104,7 @@
                         <div class="col-6" style="font-weight:bold"><p>Totalbelopp (SEK)</p></div>
                         <div class="col-6" style="font-size:18px;font-weight:bold;text-align:right"><p id="tot_cost">@Model.TotOrderCost .-</p></div>
                     </div>
-                    @* <div>
-                        <a class="btn" asp-controller="Cart" asp-action="Checkout" style="width:100%;border-radius:4px;margin-bottom:20px;margin-top:30px;background-color:forestgreen;color:white">Till Kassan</a>
-                    </div> *@
+      
                 </div>
              </div>
         

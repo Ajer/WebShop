@@ -177,11 +177,119 @@
     //             this.submit();
     //         });
     //     });
- 
+
+    function test(val, str) {
+        if (val.includes("<") || val.includes(">")) {
+            $('#checkout' + str).val('');
+            $('#checkout' + str).addClass("red_border");
+        }
+        else{
+            $('#checkout' + str).removeClass("red_border");
+        }
+    }
+    
+    function test2(val) {
+        var emailPattern = /^[a-zA-Z0-9._-]+@@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+        if (!emailPattern.test(val)) {
+            $('#checkout_email').addClass("red_border");
+        }
+        else {
+            $('#checkout_email').removeClass("red_border");
+        }
+    }
+
+
+    $(document).ready(function () {
+        $('#checkout_email').on('change', function (event) {
+            var value_e = $('#checkout_email').val().trim();
+            // test2(value_e);
+            test(value_e, "_email");          
+        });
+    });
+
+    $(document).ready(function () {
+        $('#checkout_firstname').on('change', function (event) {
+            var value_f = $('#checkout_firstname').val().trim();
+            test(value_f, "_firstname");
+        });
+    });
+
+    $(document).ready(function () {
+        $('#checkout_lastname').on('change', function (event) {
+            var value_l = $('#checkout_lastname').val().trim();
+            test(value_l, "_lastname");
+        });
+    });
+
+    $(document).ready(function () {
+        $('#checkout_adress').on('change', function (event) {
+            var value_a = $('#checkout_adress').val().trim();
+            test(value_a, "_adress");
+        });
+    });
+
+    $(document).ready(function () {
+        $('#checkout_zip').on('change', function (event) {
+            var value_z = $('#checkout_zip').val().trim();
+            test(value_z, "_zip");
+        });
+    });
+
+    $(document).ready(function () {
+        $('#checkout_city').on('change', function (event) {
+            var value_c = $('#checkout_city').val().trim();
+            test(value_c, "_city");
+        });
+    });
+
+    $(document).ready(function () {
+        $('#order_form').on('change', function (event) {
+
+            //var emailPattern = /^[a-zA-Z0-9._-]+@@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+            
+            var value_e = $('#checkout_email').val().trim();
+            var value_f = $('#checkout_firstname').val().trim();
+            var value_l = $('#checkout_lastname').val().trim();
+            var value_a = $('#checkout_adress').val().trim();
+            var value_z = $('#checkout_zip').val().trim();
+            var value_c = $('#checkout_city').val().trim();
+
+            
+            // test(value_f,"_firstname");
+            // test(value_l,"_lastname");
+      
+            
+
+            // if (emailPattern.test(value_e)) {
+            //     alert('ok');
+            // }
+            // else {
+            //     alert('invalid');
+            // }
+
+            
+
+
+            if (value_e.length > 0 && value_f.length > 0 && value_l.length > 0 && value_a.length > 0 && value_z.length > 0 && value_c.length > 0) {
+                $('#do_order').prop("disabled", false);
+            }
+            else {
+                $('#do_order').prop("disabled", true);
+            }
+        });
+    });
+  
+    
+    
+
+
     $(document).ready(function () {
         $('#freight_option').on('change', function (event) {
             // var p = document.getElementById("freight_cost");
+
             $('#freight_cost').html(this.value + "&nbsp;.-");
+            $('#freight_alt').html($("#freight_option option:selected").text());
+
             let _selectedValue = $(this).val();
             let _data = { "selected_val": _selectedValue };
             $.ajax({
@@ -190,7 +298,6 @@
                 data: _data,
                 success: function (result) {
                     if (result) {
-                        //alert(result);
                         $('#tot_cost').html(result + "&nbsp;.-");
                     }
                     else { 

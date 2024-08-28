@@ -120,12 +120,20 @@ body {
 #reg_pass:-webkit-autofill, #reg_pass:-webkit-autofill:focus, #reg_email:-webkit-autofill,
 #reg_email:-webkit-autofill:focus,
 #login_pass:-webkit-autofill, #login_pass:-webkit-autofill:focus, #login_email:-webkit-autofill,
-#login_email:-webkit-autofill:focus {
-    -webkit-box-shadow: 0 0 0 40rem #ffff inset;
+#login_email:-webkit-autofill:focus,.form-control:-webkit-autofill, .form-control:-webkit-autofill:focus
+{
+    -webkit-box-shadow: 0 0 0 40rem #ffff inset !important;
     outline: 0 !important;
     border: 1px solid lightgray !important;
 }
 
+.red_border{
+    border:1px solid red;
+}
+
+.normal_border {
+    border:1px solid lightgray;
+}
 
 .long_t{
     margin-right:20px;
