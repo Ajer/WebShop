@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using WebShop.Data.Migrations;
 using WebShop.Models;
+using WebShop.Dto;
 
 namespace WebShop.Data
 {
