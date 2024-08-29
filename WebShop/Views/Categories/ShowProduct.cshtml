@@ -18,7 +18,7 @@
             {
                 if (item.Id==7)
                 {
-                    continue;
+                    continue; 
                 }
 
              <div class="col-md-3">
@@ -51,7 +51,7 @@
                       
                        <div class="mt-auto" style="clear:both">
                             <form class="cartAdd" asp-controller="Cart" asp-action="AddToCart" method="post" asp-route-id="@item.Id">
-                              <input type="submit"  value="Lägg i varukorgen" href="#" id="cart-btn" class="btn btn-dark" style="max-width:200px" />
+                              <input type="submit"  value="Lägg i varukorgen" id="cart-btn" class="btn btn-dark" style="max-width:200px" />
                            </form>  
                        </div>
                
@@ -59,6 +59,8 @@
                 </div>
               </div>
              }
+
+
            @*  <div class="col-md-4">
             <div class="card" style="min-width:240px;height:100%;">
                 <img src="~/Images/Products/Desktops/HP_Pavilion_Gaming_Desktop_TG01_1.jpg" class="card-img-top" alt="" />
@@ -75,40 +77,7 @@
                     </div>
                 </div>
             </div> *@
-            @* <div class="col-md-4">
-              <div class="card" style="min-width:240px;height:100%;">
-                <img src="~/Images/Products/Desktops/desktop-inspiron-3910_1.jpg"  class="card-img-top" alt="">
-                <div class="card-body d-md-flex flex-column">
-                  
-                    <h5 class="card-title">Dell Inspiron 3090</h5>
-                
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <h5 style="font-size:12px;color:forestgreen">I lager: 30st</h5>
-                    <h5 class="card-text">5500 kr</h5>
-                    <a href="#" class="mt-auto btn btn-dark" style="max-width:200px">Lägg i varukorgen</a>
-                   
-                </div>
-              </div>
-            </div>  *@
-            @* <div class="col-md-4">
-              <div class="card" style="min-width:240px;height:100%;">
-                <img src="~/Images/Products/Desktops/HP_Pavilion_TP01_3042_1.jpg" class="card-img-top" alt="">
-                <div class="card-body d-md-flex flex-column">
-                
-                    <h5 class="card-title">HP Pavilion TP01 3042</h5>
-                 
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <h5 style="font-size:12px;color:forestgreen">I lager: 30st</h5>
-                    <h5 class="card-text">5500 kr</h5>
-                    <a href="#" class="mt-auto btn btn-dark" style="max-width:200px">Lägg i varukorgen</a>
-                    <!-- </div> -->
-                </div>
-              </div>
-           </div> *@
+            
        </div>
 </div>
 
-@* <div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div> *@

@@ -242,11 +242,11 @@
         });
     });
 
+    // enable-disable order-button
     $(document).ready(function () {
         $('#order_form').on('change', function (event) {
 
-            //var emailPattern = /^[a-zA-Z0-9._-]+@@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-            
+         
             var value_e = $('#checkout_email').val().trim();
             var value_f = $('#checkout_firstname').val().trim();
             var value_l = $('#checkout_lastname').val().trim();
@@ -255,21 +255,6 @@
             var value_c = $('#checkout_city').val().trim();
 
             
-            // test(value_f,"_firstname");
-            // test(value_l,"_lastname");
-      
-            
-
-            // if (emailPattern.test(value_e)) {
-            //     alert('ok');
-            // }
-            // else {
-            //     alert('invalid');
-            // }
-
-            
-
-
             if (value_e.length > 0 && value_f.length > 0 && value_l.length > 0 && value_a.length > 0 && value_z.length > 0 && value_c.length > 0) {
                 $('#do_order').prop("disabled", false);
             }
@@ -282,7 +267,8 @@
     
     
 
-
+    // Changing the values for freight_option , freight_cost and <a href="#"></a>
+    // when changing dropdown-value of 
     $(document).ready(function () {
         $('#freight_option').on('change', function (event) {
             // var p = document.getElementById("freight_cost");

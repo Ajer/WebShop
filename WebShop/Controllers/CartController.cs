@@ -85,7 +85,7 @@ namespace WebShop.Controllers
 
 
 
-        // Adds the product with id = Product.Id to the cart
+        // Post: Adds the product with id = Product.Id to the cart
         public async Task<IActionResult> AddToCart(int? id)
         {
             var p = await _context.Products.Where(p => p.Id == id).FirstOrDefaultAsync();
@@ -125,6 +125,7 @@ namespace WebShop.Controllers
         }
 
 
+        // Post: Removes one product with id = Product.Id from the cart
         public async Task<IActionResult> RemoveOneFromCart(int? id)
         {
             var p = await _context.Products.Where(p => p.Id == id).FirstOrDefaultAsync();
