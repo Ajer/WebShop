@@ -1,8 +1,89 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model WebShop.Dto.SearchDto
+
 @{
+    ViewData["Title"] = "MediaSales - Sökresultat";
+
+    int nCatSearch = Model.Categories.Count;
+    int nProdSearch = Model.ProdDtos.Count;
+    int totSrch = nCatSearch + nProdSearch;
+
+    string c_srch_word = (nCatSearch == 1) ? "Kategori funnen" : "Kategorier funna";
+    string p_srch_word = (nProdSearch == 1) ? "Produkt funnen" : "Produkter funna";
 }
 
+<div>
+    <h6>Hem->Produkter->Sökresultat</h6>   @* breadcrumbs *@
+</div>
 
-<h2>Sökresultat</h2>
+<h5 style="margin-top:30px;">@Url.Content(totSrch.ToString()) Sökresultat för '@Model.SearchString':</h5>
+
+@if (nCatSearch > 0)
+{
+
+      <h6 style="margin-top:20px;margin-left:20px">@Url.Content(nCatSearch.ToString()) @Url.Content(c_srch_word) för '@Model.SearchString':
+      @foreach(var c in Model.Categories)
+      {  
+         <a asp-controller="Categories" asp-action="ShowProduct" asp-route-id="@c.Id" class="search_link" style="margin-left:10px;margin-right:5px">@c.SwedishName</a>
+      }
+      </h6>
+    
+}
+
+@if (nProdSearch > 0)
+{
+    
+    <h6 style="margin-top:20px;margin-left:20px">@Url.Content(nProdSearch.ToString()) @Url.Content(p_srch_word) för '@Model.SearchString':</h6>
+    
+    <div class="container" id="searchSection" style="margin-top:50px;padding:0 !important">
+    <div class="row gy-3 gx-5" style="margin-bottom:30px">
+
+    @foreach (var item in Model.ProdDtos)
+    {
+        @* if (item.Id == 7)
+        {
+            continue;
+        } *@
+
+        <div class="col-md-3">
+            <div class="card" style="margin-right:30px;min-width:200px !important;height:100%;padding-right:5px;box-shadow:0 2px 2px rgba(0,0,0,0.2)">
+                <!--style="width: 15rem;" -->
+                <img src="~/Images/Products/@item.CatName/@item.ImageUrl" class="card-img-top card_img" alt="" />
+                <div class="card-body d-md-flex flex-column">
+                    <h5 class="card-title">@item.Name</h5>
+                    <p class="card-text">@item.Description</p>
+                    @if (item.QuantityInStore > 0)
+                    {
+                        <h5 style="font-size:12px;color:forestgreen">I lager: @item.QuantityInStore st</h5>
+                    }
+                    else
+                    {
+                        <h5 style="font-size:12px;color:crimson">Ej i lager</h5>
+                    }
+                    @if (item.IsDiscount)
+                    {
+                        <div style="display:block;margin-bottom:15px;">
+                            <h5 class="card-text" style="text-decoration:line-through;float:left">@item.Price kr</h5>
+                            <h5 class="card-text" style="float:right;color:white;background-color:darkgreen;border:2px solid darkgreen;border-radius:4px;padding-left:5px;padding-right:5px;">@item.DiscountPrice kr</h5>
+                            @* <h6 class="campaign" style="float:right;margin-top:5px;margin-right:5px;">Nu</h6> *@
+                        </div>
+
+                        <br />
+                    }
+                    else
+                    {
+                        <h5 class="card-text">@item.Price kr</h5>
+                    }
+
+                    <div class="mt-auto" style="clear:both">
+                        <form class="cartAdd" asp-controller="Cart" asp-action="AddToCart" method="post" asp-route-id="@item.Id">
+                            <input type="submit" value="Lägg i varukorgen" id="cart-btn" class="btn btn-dark" style="max-width:200px" />
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    }
+ </div>
+</div>
+}

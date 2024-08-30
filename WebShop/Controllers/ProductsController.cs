@@ -5,8 +5,11 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
 using WebShop.Data;
+using WebShop.Dto;
+using WebShop.Infrastructure;
 using WebShop.Models;
 
 namespace WebShop.Controllers
@@ -49,15 +52,62 @@ namespace WebShop.Controllers
         }
 
 
+        //Get: Returns a searchresult from search-form in web-shop
         [AllowAnonymous]
         public async Task<IActionResult> Search(string? srch)
         {
-            return View();
+
+            SearchDto searchDto = new SearchDto();
+
+            if (srch!=null)
+            {
+
+                if (srch.IsValid())   // isValid from UtilitiesExtensions
+                {
+                    var cat_res = await _context.Categories.Where(c => c.Name.Contains(srch) || c.SwedishName.Contains(srch)).ToListAsync();
+                    var prod_res = await _context.Products.Where(p => p.Name.Contains(srch)).ToListAsync();
+
+                    // Assign SrchDto-object : List<ProdDto> ,List<Category>, searchstring 
+
+                    if (cat_res!=null)
+                    {
+                        searchDto.Categories = cat_res;
+                    }
+                    if (prod_res!=null)
+                    {
+                        List<ProductDto> productDtos = new List<ProductDto>(); 
+
+                        foreach(var p in prod_res)  // transform products to productDtos
+                        {
+                            var cat = await _context.Categories.Where(c => c.Id == p.CategoryId).FirstOrDefaultAsync();
+
+                            var pDto = new ProductDto
+                            {
+                                Id = p.Id,
+                                Name = p.Name,
+                                CatName = cat.Name,
+                                SwedishCatName = cat.SwedishName,
+                                ImageUrl = p.ImageUrl,
+                                Description = p.Description,
+                                DiscountPrice = p.DiscountPrice,
+                                Price = p.Price,
+                                IsDiscount = p.IsDiscount,
+                                QuantityInStore = p.QuantityInStore,                                
+                            };
+                            productDtos.Add(pDto);
+                        }
+                        searchDto.ProdDtos = productDtos;
+                    }
+                
+                    searchDto.SearchString = srch;
+                }
+            }
+            return View(searchDto);   // Empty searchDto if non-valid
         }
 
 
 
-            // GET: Products/Create
+        // GET: Products/Create
         public IActionResult Create()
         {
             ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Id");

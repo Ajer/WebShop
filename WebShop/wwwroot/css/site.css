@@ -46,9 +46,22 @@ body {
     border: 1px solid gray;
 }
 
+.srch-normal {
+    border: 1px solid lightgray;
+}
+
 .srch-focus{
     border: 1px solid gray;
  }
+
+
+.search_link, search_link:visited, .search_link:active, .search_link:hover {
+    color: black;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+
 
 #order_form label{
     font-weight:normal;
@@ -120,7 +133,7 @@ body {
 #reg_pass:-webkit-autofill, #reg_pass:-webkit-autofill:focus, #reg_email:-webkit-autofill,
 #reg_email:-webkit-autofill:focus,
 #login_pass:-webkit-autofill, #login_pass:-webkit-autofill:focus, #login_email:-webkit-autofill,
-#login_email:-webkit-autofill:focus,.form-control:-webkit-autofill, .form-control:-webkit-autofill:focus
+#login_email:-webkit-autofill:focus, .form-control:-webkit-autofill, .form-control:-webkit-autofill:focus
 {
     -webkit-box-shadow: 0 0 0 40rem #ffff inset !important;
     outline: 0 !important;
@@ -366,7 +379,7 @@ li button {
         }
 
         #products {
-            min-height: 4700px;
+            min-height: 5900px;
         }
 
         .btn_discount {
@@ -395,6 +408,10 @@ li button {
 
         #payment_method {
             font-size: 0.8rem;
+        }
+
+        #searchSection {
+            min-height: 6200px;
         }
     }
 
@@ -432,7 +449,7 @@ li button {
      }
 
      #products {
-        min-height: 4700px;
+        min-height: 5900px;
      }
 
      .btn_discount {
@@ -461,6 +478,10 @@ li button {
 
      #payment_method {
         font-size: 1rem;
+     }
+        
+     #searchSection {
+            min-height: 6200px;
      }
    }
 
@@ -498,7 +519,7 @@ li button {
       }
 
       #products {
-         min-height: 4700px;
+         min-height: 5900px;
       }
 
       .btn_discount {
@@ -523,6 +544,10 @@ li button {
 
       #freight_option {
         font-size: 1rem;
+      }
+
+      #searchSection {
+        min-height: 6200px;
       }
   }
 
@@ -552,7 +577,7 @@ li button {
         }
 
         #products {
-            min-height: 4700px; /*---  ---*/
+            min-height: 5900px; /*---  ---*/
         }
 
         .card {
@@ -578,6 +603,10 @@ li button {
 
         #checkoutSection {
             min-height: 2000px;
+        }
+
+        #searchSection {
+            min-height: 6200px;
         }
     }
 
@@ -606,8 +635,8 @@ li button {
             margin-right: 50px;
         }
 
-        #products {
-            min-height: 4700px; /*---  ---*/
+        #products  {
+            min-height: 5900px; /*---  ---*/
         }
 
         .card {
@@ -634,6 +663,10 @@ li button {
         #checkoutSection {
             min-height: 2000px;
         }
+
+        #searchSection {
+            min-height: 6200px;
+        }
     }
 
 
@@ -658,7 +691,7 @@ li button {
             margin-bottom: 30px;
         }
 
-        #products {
+        #products, #searchSection {
             min-height: 1600px;
         }
 
@@ -704,7 +737,7 @@ li button {
             margin-bottom: 30px;
         }
 
-        #products {
+        #products, #searchSection {
             min-height: 1600px;
         }
 
@@ -752,7 +785,7 @@ li button {
             margin-bottom: 30px;
         }
 
-        #products {
+        #products, #searchSection {
             min-height: 1600px;
         }
 
@@ -787,7 +820,7 @@ li button {
             margin-bottom: 30px;
         }
 
-        #products {
+        #products, #searchSection {
             min-height: 1600px;
         }
 
@@ -825,7 +858,7 @@ li button {
         /*.slideshow-container {       
         padding-top: 50px;
     }*/
-        #products {
+        #products, #searchSection {
             min-height: 1600px;
         }
 
@@ -860,7 +893,7 @@ li button {
             margin-right: 0px;
         }
 
-        #products {
+        #products, #searchSection {
             min-height: 1600px;
         }
 
@@ -880,4 +913,5 @@ li button {
         #checkoutSection{
             min-height: 1200px;
         }
+
     }

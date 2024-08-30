@@ -110,14 +110,14 @@ namespace WebShop.Controllers
 
                 string t = (string)HttpContext.Request.Headers.Referer;
                 if (t != null)
-                {
-                    if (!t.EndsWith("/Cart"))
+                { 
+                    if (!t.EndsWith("/Cart"))   // adding from cart
                     {
                         return RedirectToAction("ShowProduct", "Categories", new { id = p.CategoryId });
                     }
                     else
                     {
-                        return RedirectToAction("Index");
+                        return RedirectToAction("Index");   // adding from category-page
                     }
                 }
             }

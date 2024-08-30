@@ -20,17 +20,26 @@
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+                
+                
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-start" style="margin-left:15px;">
-                    <div class="input-group" style="min-width:200px">              
-                        <input type="text" class="form-control" name="srch" id="srch-field">
-                        <a id="srch-btn" class="input-group-text" href="#" style="background-color:#fafafa">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="bi bi-search" style="fill:currentColor;color:gray" viewBox="0 0 16 16">
-                                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
-                            </svg>
-                        </a>
-                    </div>
-                </div>
+                      <form asp-controller="Products" asp-action="Search" method="get">
+                        <div class="input-group" style="min-width:300px">   @* style=" min-width:200px *@
 
+                          <input type="text" class="form-control" name="srch" id="srch-field" spellcheck="false" placeholder="Sök Varor eller Kategorier">
+                          <label>      
+                              <input type="submit" id="srch-btn" class="input-group-text" style="display:none" />
+                              <div id="svg-btn" class="srch-normal" style="padding-left:10px;padding-top:5px;width:40px;height:40px;border-radius:0 4px 4px 0;cursor:pointer">
+                               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="bi bi-search" style="fill:currentColor;color:gray" viewBox="0 0 16 16">
+                                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                               </svg>
+                             </div>
+                          </label>
+                       </div> 
+                     </form>
+                </div>
+               
+                
 
 
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-end">
@@ -295,49 +304,25 @@
         });
     });
 
+    // $(document).ready(function () {
+    //         $('#srch-field').on('focus', function (event) {
+    //         $('#srch-field').attr('placeholder', '');
+    //        });
+    //  });
+    
 
-    $(document).ready(function () {
-        $('#srch-field').on('focus', function (event) {
-            $('#srch-btn').addClass("srch-focus");
-        });
-    });
+    // $(document).ready(function () {
+    //     $('#srch-field').on('focus', function (event) {
+    //         $('#svg-btn').addClass("srch-focus");
+    //     });
+    // });
 
-    $(document).ready(function () {
-        $('#srch-field').on('blur', function (event) {
-            $('#srch-btn').removeClass("srch-focus");
-        });
-    });
+    // $(document).ready(function () {
+    //     $('#srch-field').on('blur', function (event) {
+    //         $('#svg-btn').removeClass("srch-focus");
+    //     });
+    // });
 
-    // let slideIndex = 1;
-    // showSlides(slideIndex);
-
-    // // Next/previous controls
-    // function plusSlides(n) {
-    //     slideIndex += n;
-    //     showSlides(slideIndex);
-    // }
-
-    // // Thumbnail image controls
-    // function currentSlide(n) {
-    //     slideIndex = n;
-    //     showSlides(slideIndex);
-    // }
-
-    // function showSlides(n) {
-    //     let i;
-    //     let slides = document.getElementsByClassName("mySlides");
-    //     let dots = document.getElementsByClassName("dot");
-    //     if (n > slides.length) { slideIndex = 1 }
-    //     if (n < 1) { slideIndex = slides.length }
-    //     for (i = 0; i < slides.length; i++) {
-    //         slides[i].style.display = "none";
-    //     }
-    //     for (i = 0; i < dots.length; i++) {
-    //         dots[i].className = dots[i].className.replace(" active", "");
-    //     }
-    //     slides[slideIndex - 1].style.display = "block";
-    //     dots[slideIndex - 1].className += " active";
-    // }
 </script> 
 
 
