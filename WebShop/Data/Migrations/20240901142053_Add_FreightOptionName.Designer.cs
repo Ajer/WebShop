@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebShop.Data;
 
@@ -11,9 +12,11 @@ using WebShop.Data;
 namespace WebShop.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240901142053_Add_FreightOptionName")]
+    partial class Add_FreightOptionName
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -292,19 +295,6 @@ namespace WebShop.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Customers");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Address = "Stadsborgaregatan 97",
-                            City = "Örebro",
-                            Country = "Sweden",
-                            Email = "gunnar@example.com",
-                            FirstName = "Gunnar",
-                            LastName = "Appelkvist",
-                            Zip = "21192"
-                        });
                 });
 
             modelBuilder.Entity("WebShop.Models.Order", b =>
@@ -342,18 +332,6 @@ namespace WebShop.Data.Migrations
                     b.HasIndex("CustomerId");
 
                     b.ToTable("Orders");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CustomerId = 1,
-                            FreightCost = 49.0,
-                            FreightOptionName = "DBSchenker Express 1 dag 49:-",
-                            OrderDate = new DateTime(2024, 9, 1, 16, 34, 39, 682, DateTimeKind.Local).AddTicks(5200),
-                            PaymentOption = "Invoice 30 days",
-                            TotOrderCost = 10549.0
-                        });
                 });
 
             modelBuilder.Entity("WebShop.Models.OrderCartLine", b =>
@@ -378,22 +356,6 @@ namespace WebShop.Data.Migrations
                     b.HasIndex("OrderId");
 
                     b.ToTable("OrderCartLines");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            OrderId = 1,
-                            ProdId = 2,
-                            Quantity = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            OrderId = 1,
-                            ProdId = 15,
-                            Quantity = 1
-                        });
                 });
 
             modelBuilder.Entity("WebShop.Models.Product", b =>

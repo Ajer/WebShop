@@ -331,54 +331,55 @@ namespace WebShop.Data
             //builder.Entity<Product>().HasData(products);
 
 
-            List<OrderCartLine> orderCartLines = new List<OrderCartLine>
-            {
-                new OrderCartLine
-                {
-                    Id = 1,
-                    OrderId = 1,
-                    ProdId = 2,
-                    Quantity = 1
-                },
-                new OrderCartLine
-                {
-                    Id = 2,
-                    OrderId = 1,
-                    ProdId = 15,
-                    Quantity = 1
-                }
-            };
-            builder.Entity<OrderCartLine>().HasData(orderCartLines);
+            //List<OrderCartLine> orderCartLines = new List<OrderCartLine>
+            //{
+            //    new OrderCartLine
+            //    {
+            //        Id = 1,
+            //        OrderId = 1,
+            //        ProdId = 2,
+            //        Quantity = 1
+            //    },
+            //    new OrderCartLine
+            //    {
+            //        Id = 2,
+            //        OrderId = 1,
+            //        ProdId = 15,
+            //        Quantity = 1
+            //    }
+            //};
+            //builder.Entity<OrderCartLine>().HasData(orderCartLines);
 
-            List<Customer> customers = new List<Customer>
-            {
-                new Customer
-                {
-                    Id = 1,
-                    FirstName = "Gunnar",
-                    LastName = "Appelkvist",
-                    Email = "gunnar@example.com",
-                    Address = "Stadsborgaregatan 97",
-                    Zip = "21192",
-                    City = "Örebro",
-                    Country = "Sweden"
-                }
-            };
-            builder.Entity<Customer>().HasData(customers);
+            //List<Customer> customers = new List<Customer>
+            //{
+            //    new Customer
+            //    {
+            //        Id = 1,
+            //        FirstName = "Gunnar",
+            //        LastName = "Appelkvist",
+            //        Email = "gunnar@example.com",
+            //        Address = "Stadsborgaregatan 97",
+            //        Zip = "21192",
+            //        City = "Örebro",
+            //        Country = "Sweden"
+            //    }
+            //};
+            //builder.Entity<Customer>().HasData(customers);
 
-            List<Order> orders = new List<Order>
-            {
-                new Order
-                {
-                    Id = 1,
-                    OrderDate = DateTime.Now,
-                    TotOrderCost = 10549,
-                    FreightCost = 49,
-                    PaymentOption = "Invoice 30 days",
-                    CustomerId = 1
-                }
-            };
-            builder.Entity<Order>().HasData(orders);
+            //List<Order> orders = new List<Order>
+            //{
+            //    new Order
+            //    {
+            //        Id = 1,
+            //        OrderDate = DateTime.Now,
+            //        TotOrderCost = 10549,
+            //        FreightCost = 49,
+            //        FreightOptionName = "DBSchenker Express 1 dag 49:-",
+            //        PaymentOption = "Invoice 30 days",
+            //        CustomerId = 1
+            //    }
+            //};
+            //builder.Entity<Order>().HasData(orders);
         }
 
         public DbSet<Category> Categories { get; set; }
