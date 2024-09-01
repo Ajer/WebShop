@@ -54,7 +54,7 @@ namespace WebShop.Controllers
 
         //Get: Returns a searchresult from search-form in web-shop
         [AllowAnonymous]
-        public async Task<IActionResult> Search(string? srch)
+        public async Task<IActionResult> Search(string? srch,int showPage=0)
         {
 
             SearchDto searchDto = new SearchDto();
@@ -100,9 +100,18 @@ namespace WebShop.Controllers
                     }
                 
                     searchDto.SearchString = srch;
+                    searchDto.ShowPage = showPage;
                 }
             }
             return View(searchDto);   // Empty searchDto if non-valid
+        }
+
+
+        [AllowAnonymous]
+        public IActionResult ChangeSearchPaginationPage(SearchDto theObj)
+        {
+
+            return RedirectToAction("Search", new { srch = theObj.SearchString, showPage = theObj.ShowPage });
         }
 
 

@@ -188,6 +188,7 @@
     //     });
 
     function test(val, str) {
+
         if (val.includes("<") || val.includes(">")) {
             $('#checkout' + str).val('');
             $('#checkout' + str).addClass("red_border");
@@ -198,6 +199,7 @@
     }
     
     function test2(val) {
+
         var emailPattern = /^[a-zA-Z0-9._-]+@@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
         if (!emailPattern.test(val)) {
             $('#checkout_email').addClass("red_border");
@@ -231,9 +233,9 @@
     });
 
     $(document).ready(function () {
-        $('#checkout_adress').on('change', function (event) {
-            var value_a = $('#checkout_adress').val().trim();
-            test(value_a, "_adress");
+        $('#checkout_address').on('change', function (event) {
+            var value_a = $('#checkout_address').val().trim();
+            test(value_a, "_address");
         });
     });
 
@@ -254,12 +256,11 @@
     // enable-disable order-button
     $(document).ready(function () {
         $('#order_form').on('change', function (event) {
-
-         
+            
             var value_e = $('#checkout_email').val().trim();
             var value_f = $('#checkout_firstname').val().trim();
             var value_l = $('#checkout_lastname').val().trim();
-            var value_a = $('#checkout_adress').val().trim();
+            var value_a = $('#checkout_address').val().trim();
             var value_z = $('#checkout_zip').val().trim();
             var value_c = $('#checkout_city').val().trim();
 

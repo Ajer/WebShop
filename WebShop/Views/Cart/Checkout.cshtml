@@ -13,55 +13,55 @@
                <div class="container mt-4">
                    <div class="col">
                         <h5>1.Vem skall ordern skickas till ?</h5>
-                        <form id="order_form" class="form" asp-controller="Cart" asp-action="Order" method="post">
-                          <label>Email *</label>
-                          <input type="email" class="form-control" id="checkout_email" name="email" required />
-                            
-                          <label>Förnamn *</label>
-                          <input type="text" class="form-control" id="checkout_firstname" name="firstname" required />
-                        
-                          <label>Efternamn *</label>
-                          <input type="text" class="form-control" id="checkout_lastname" name="lastname" required />
-                       
-                          <label>Address *</label>
-                          <input type="text" class="form-control" id="checkout_adress" name="adress" required />
-                
-                          <label>Postnummer *</label>
-                          <input type="text" class="form-control" id="checkout_zip" name="zip" required />
-                            
-                          <label>Stad *</label>
-                          <input type="text" class="form-control" id="checkout_city" name="city" required />
-                                    
-                          
-                          <label>Land *</label>
-                          <select class="form-select" name="country">
+                        <form id="order_form" class="form" asp-controller="Cart" asp-action="OrderForm" method="post">
+                          <label asp-for="Email">Email *</label>
+                          <input asp-for="Email" type="email" class="form-control" id="checkout_email" name="email" required />
+
+                          <label asp-for="FirstName">Förnamn *</label>
+                          <input asp-for="FirstName" type="text" class="form-control" id="checkout_firstname" name="firstname" required />
+
+                          <label asp-for="LastName">Efternamn *</label>
+                          <input asp-for="LastName" type="text" class="form-control" id="checkout_lastname" name="lastname" required />
+
+                          <label asp-for="Address">Adress *</label>
+                          <input asp-for="Address" type="text" class="form-control" id="checkout_address" name="address" required />
+
+                          <label asp-for="Zip">Postnummer *</label>
+                          <input asp-for="Zip" type="text" class="form-control" id="checkout_zip" name="zip" required />
+
+                          <label asp-for="City">Stad *</label>
+                          <input asp-for="City" type="text" class="form-control" id="checkout_city" name="city" required />
+
+                          <label asp-for="Country">Land *</label>
+                          <select asp-for="Country" class="form-select" name="country">
                                 <option value="Sweden">Sverige</option>
                                 <option value="Norway">Norge</option>
                                 <option value="Denmark">Danmark</option>
                                 <option value="Finland">Finland</option>
                           </select>
+
                           <div class="mt-4">
                             <h5>2.Välj Fraktalternativ nedan *</h5>
-                            <form asp-controller="Cart" asp-action="ChangeFreight" method="post">
-                               <select id="freight_option" name="freight_option" class="form-select">
+                            @* <form asp-controller="Cart" asp-action="ChangeFreight" method="post"> *@
+                              <select asp-for="FreightCost" id ="freight_option" name="freightcost" class="form-select">
                                 <option value="0">PostNord Standard 2-3 dagar 0:-</option>
                                 <option value="19">DBSchenker Standard 2-3 dagar 19:-</option>
                                 <option value="39">Postnord Express 1 dag 39:-</option>
                                 <option value="49">DBSchenker Express 1 dag 49:-</option>                             
                               </select>
-                            </form>
-                          </div>
+                            @* </form> *@
+                            </div>
                             <div class="mt-4">
                                 <h5>3.Välj Betalningsalternativ nedan *</h5>
-                                <select class="form-select" id="payment_method" name="payment_method">
-                                    <option value="1">Klarna Direktbetalning</option>
-                                    <option value="2">Faktura 30 dagar</option>
-                                    <option value="3">Kortbetalning Visa/Mastercard</option>
-                                    <option value="4">Swish</option>
+                                <select asp-for="PaymentMethod" class="form-select" id="payment_method" name="paymentmethod">
+                                    <option value="Klarna Direct">Klarna Direktbetalning</option>
+                                    <option value="Invoice 30 days">Faktura 30 dagar</option>
+                                    <option value="Card Visa/Mastercard">Kortbetalning Visa/Mastercard</option>
+                                    <option value="Swish">Swish</option>
                                 </select>
-                            </div>
+                            </div> 
                             <div>
-                                <input type="submit" id="do_order" disabled class="btn" style="width:100%;border-radius:4px;margin-bottom:20px;margin-top:30px;background-color:forestgreen;color:white" value="Genomför order" />
+                                <input type="submit" disabled id="do_order" class="btn" style="width:100%;border-radius:4px;margin-bottom:20px;margin-top:30px;background-color:forestgreen;color:white" value="Genomför order" />
                             </div>
                         </form>
                    </div>

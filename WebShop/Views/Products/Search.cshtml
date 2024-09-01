@@ -1,4 +1,5 @@
-﻿@model WebShop.Dto.SearchDto
+﻿@using WebShop.Dto
+@model WebShop.Dto.SearchDto
 
 @{
     ViewData["Title"] = "MediaSales - Sökresultat";
@@ -31,14 +32,26 @@
 
 @if (nProdSearch > 0)
 {
-    
+ 
+    IEnumerable<ProductDto> theList = Model.ProdDtos;
+
+    // 7 => skip(0*8).take(7) => (maxPageIndex 0,rest 7) , currentPage 0
+    // 8 => skip(0*8).take(8) => (maxPageIndex 0,rest 8) , currentPage 0
+
+    if (nProdSearch >8)
+    {
+        // 18 => skip(0*8).take(8) , skip(1*8).take(8), skip(2*8).take(2) => (maxPageIndex 2,rest 2) , currentPage 0
+        // 15 => skip(0*8).take(8), skip(1*8).take(7) => (maxPageIndex 1,rest 7) , currentPage 0
+        
+        // theList = theList.Skip(8).Take(8);  
+    }
     <h6 style="margin-top:20px;margin-left:20px">@Url.Content(nProdSearch.ToString()) @Url.Content(p_srch_word) för '@Model.SearchString':</h6>
     
-    <div class="container" id="searchSection" style="margin-top:50px;padding:0 !important">
+   <div class="container" id="searchSection" style="margin-top:50px;padding:0 !important">
     <div class="row gy-3 gx-5" style="margin-bottom:30px">
 
-    @foreach (var item in Model.ProdDtos)
-    {
+      @foreach (var item in theList)   @* Model.ProdDtos *@
+      {
         @* if (item.Id == 7)
         {
             continue;
@@ -84,6 +97,36 @@
             </div>
         </div>
     }
- </div>
-</div>
-}
+    </div>
+        
+        @* @if (nProdSearch>8)
+        { *@
+
+            <ul class="pagination">
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#">&lt;</a>
+                    </li>
+
+                    <li class="page-item active" aria-current="page">
+                         <a href="@Url.Action("ChangeSearchPaginationPage", "Products",
+                        new {SearchString=Model.SearchString,ShowPage=1})" class="page-link">1</a>
+                    </li>
+
+                    <li class="page-item" >
+                       <a href="@Url.Action("ChangeSearchPaginationPage", "Products",
+                         new {SearchString=Model.SearchString,ShowPage=2})" class="page-link">2</a>        
+                    </li>
+                
+                    <li class="page-item">
+                           <a href="@Url.Action("ChangeSearchPaginationPage", "Products",
+                        new {SearchString=Model.SearchString,ShowPage=3})" class="page-link">3</a>
+                     </li>
+                 
+
+                    <li class="page-item">
+                        <a class="page-link" href="#">&gt;</a>
+                    </li>
+                </ul>
+        @* } *@
+   </div>           
+ }

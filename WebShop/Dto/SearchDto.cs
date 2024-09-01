@@ -11,5 +11,7 @@ namespace WebShop.Dto
 
         public string SearchString { get; set; }
 
+        public int ShowPage { get; set; }  // For pagination
+
     }
 }

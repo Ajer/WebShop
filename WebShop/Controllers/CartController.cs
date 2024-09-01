@@ -83,6 +83,20 @@ namespace WebShop.Controllers
             return Json(null);
         }
 
+        [HttpPost]
+        public IActionResult OrderForm(CheckoutDto chDto)
+        {
+            if (chDto!=null)
+            {
+                      
+                var j = 23;
+               
+
+
+
+            }
+            return View(null);
+        }
 
 
         // Post: Adds the product with id = Product.Id to the cart
