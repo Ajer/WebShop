@@ -12,7 +12,7 @@
 
         public string PaymentOption { get; set; }
 
-        public List<OrderCartLine> Lines { get; set; } = new List<OrderCartLine>();
+        public List<OrderCartLine> Lines { get; set; } = new List<OrderCartLine>(); // Nav
 
         public int CustomerId{ get; set; }      // FK
 
