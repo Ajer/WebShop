@@ -13,5 +13,9 @@ namespace WebShop.Dto
 
         public int ShowPage { get; set; }  // For pagination
 
+        public int MaxPageIndex { get; set; }
+
+        public int Rest { get; set; }
+
     }
 }

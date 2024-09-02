@@ -54,7 +54,7 @@ namespace WebShop.Controllers
 
         //Get: Returns a searchresult from search-form in web-shop
         [AllowAnonymous]
-        public async Task<IActionResult> Search(string? srch,int showPage=0)
+        public IActionResult Search(string? srch,int showPage=0)
         {
 
             SearchDto searchDto = new SearchDto();
@@ -64,8 +64,8 @@ namespace WebShop.Controllers
 
                 if (srch.IsValid())   // isValid from UtilitiesExtensions
                 {
-                    var cat_res = await _context.Categories.Where(c => c.Name.Contains(srch) || c.SwedishName.Contains(srch)).ToListAsync();
-                    var prod_res = await _context.Products.Where(p => p.Name.Contains(srch)).ToListAsync();
+                    var cat_res = _context.Categories.Where(c => c.Name.Contains(srch) || c.SwedishName.Contains(srch)).ToList();
+                    var prod_res = _context.Products.Where(p => p.Name.Contains(srch)).ToList();
 
                     // Assign SrchDto-object : List<ProdDto> ,List<Category>, searchstring 
 
@@ -79,7 +79,7 @@ namespace WebShop.Controllers
 
                         foreach(var p in prod_res)  // transform products to productDtos
                         {
-                            var cat = await _context.Categories.Where(c => c.Id == p.CategoryId).FirstOrDefaultAsync();
+                            var cat =  _context.Categories.Where(c => c.Id == p.CategoryId).FirstOrDefault();
 
                             var pDto = new ProductDto
                             {
@@ -97,13 +97,48 @@ namespace WebShop.Controllers
                             productDtos.Add(pDto);
                         }
                         searchDto.ProdDtos = productDtos;
+
+                        if (productDtos.Count>8)    // => paginering
+                        {
+                            int rest = 0;
+                            searchDto.MaxPageIndex = getParamsForPagination(productDtos, out rest);
+                            searchDto.Rest = rest;
+                        }
+                        else  // 0..8
+                        {
+                            searchDto.MaxPageIndex = 0;
+                            searchDto.Rest = productDtos.Count;
+                        }
                     }
                 
                     searchDto.SearchString = srch;
                     searchDto.ShowPage = showPage;
+
+  
                 }
             }
             return View(searchDto);   // Empty searchDto if non-valid
+        }
+
+
+        public int getParamsForPagination(List<ProductDto> prodDtos,out int rest)
+        {
+       
+            int nbrTot = prodDtos.Count;
+
+            int maxIndex = 0;      // 16
+            int j = maxIndex * 8;
+
+            while (j<nbrTot)
+            {
+                maxIndex++;
+                j = maxIndex * 8;             
+            }
+            maxIndex = maxIndex - 1;
+
+            rest = nbrTot - maxIndex * 8;
+
+            return maxIndex;
         }
 
 

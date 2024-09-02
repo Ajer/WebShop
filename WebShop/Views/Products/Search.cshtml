@@ -35,15 +35,25 @@
  
     IEnumerable<ProductDto> theList = Model.ProdDtos;
 
-    // 7 => skip(0*8).take(7) => (maxPageIndex 0,rest 7) , currentPage 0
-    // 8 => skip(0*8).take(8) => (maxPageIndex 0,rest 8) , currentPage 0
+    // 7 => skip(0*8).take(7) => (maxPageIndex 0,rest 7) , ShowPage 0  => 1 sida
+    // 8 => skip(0*8).take(8) => (maxPageIndex 0,rest 8) , showPage 0  => 1 sida
 
     if (nProdSearch >8)
     {
-        // 18 => skip(0*8).take(8) , skip(1*8).take(8), skip(2*8).take(2) => (maxPageIndex 2,rest 2) , currentPage 0
-        // 15 => skip(0*8).take(8), skip(1*8).take(7) => (maxPageIndex 1,rest 7) , currentPage 0
-        
-        // theList = theList.Skip(8).Take(8);  
+        // 18 => skip(0*8).take(8) , skip(1*8).take(8), skip(2*8).take(2) => (maxPageIndex 2,rest 2) , showPage 0,1,2 => 3 sidor
+        // 15 => skip(0*8).take(8), skip(1*8).take(7) => (maxPageIndex 1,rest 7) , showPage 0,1 => 2 sidor
+        // 16 => skip(0*8).take(8), skip(1*8).take(8) => (maxPageindex 1,rest 8)  , showPage 0,1 => 2 sidor
+
+        var skip = Model.ShowPage * 8;
+        var take = nProdSearch - skip;
+
+        if (take>8)
+        {
+            take = 8;
+        }
+
+        theList = theList.Skip(skip).Take(take);
+
     }
     <h6 style="margin-top:20px;margin-left:20px">@Url.Content(nProdSearch.ToString()) @Url.Content(p_srch_word) för '@Model.SearchString':</h6>
     
@@ -99,15 +109,31 @@
     }
     </div>
         
-        @* @if (nProdSearch>8)
-        { *@
+        @if (nProdSearch>8)
+        {
+               string leftArrow = (Model.ShowPage==0) ? "page-item disabled" : "page-item";
+               string rightArrow = (Model.ShowPage == Model.MaxPageIndex) ? "page-item disabled" : "page-item";
 
-            <ul class="pagination">
-                    <li class="page-item disabled">
-                        <a class="page-link" href="#">&lt;</a>
+               <ul class="pagination">
+                    <li class="@Url.Content(leftArrow)">
+                       <a href="@Url.Action("ChangeSearchPaginationPage", "Products",
+                           new {SearchString=Model.SearchString,ShowPage=Model.ShowPage-1})" class="page-link">&lt;</a>
                     </li>
 
-                    <li class="page-item active" aria-current="page">
+                   @for(int i=1;i<=Model.MaxPageIndex+1;i++)
+                   {
+
+                       string theC = (i == Model.ShowPage + 1) ? "page-item active" : "page-item";
+                 
+
+                       <li class="@Url.Content(theC)" id="@Url.Content(i.ToString())" aria-current="page">
+                         <a href="@Url.Action("ChangeSearchPaginationPage", "Products",
+                           new {SearchString=Model.SearchString,ShowPage=i-1})" class="page-link">@Url.Content(i.ToString())</a>
+                       </li>
+                   }
+
+
+                    @* <li class="page-item active" aria-current="page">
                          <a href="@Url.Action("ChangeSearchPaginationPage", "Products",
                         new {SearchString=Model.SearchString,ShowPage=1})" class="page-link">1</a>
                     </li>
@@ -120,13 +146,14 @@
                     <li class="page-item">
                            <a href="@Url.Action("ChangeSearchPaginationPage", "Products",
                         new {SearchString=Model.SearchString,ShowPage=3})" class="page-link">3</a>
-                     </li>
+                    </li> *@
                  
 
-                    <li class="page-item">
-                        <a class="page-link" href="#">&gt;</a>
+                    <li class="@Url.Content(rightArrow)">
+                       <a href="@Url.Action("ChangeSearchPaginationPage", "Products",
+                           new {SearchString=Model.SearchString,ShowPage=Model.ShowPage+1})" class="page-link">&gt;</a>
                     </li>
                 </ul>
-        @* } *@
+          } 
    </div>           
  }
