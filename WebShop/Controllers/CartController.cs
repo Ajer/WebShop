@@ -40,18 +40,22 @@ namespace WebShop.Controllers
             Cart c = HttpContext.Session.GetJson<Cart>("cart") ?? new Cart();
             int? n = HttpContext.Session.GetJson<int>("prodsInCart");
             double? tc = HttpContext.Session.GetJson<double>("totOrderCost");
+            HttpContext.Session.SetJson("freightCost", 0);    // init-value=0 : PostNord Standard 2-3 dagar 0:-
 
             checkoutDto.Cart = c;
             checkoutDto.TotQuantityInCart = n;
 
-            if (checkoutDto.TotOrderCost !=null && checkoutDto.TotOrderCost==0)
+
+            if (checkoutDto.TotOrderCost != null && checkoutDto.TotOrderCost == 0)
             {
                 checkoutDto.TotOrderCost = c.CartTotValue();  // init-value before freight is added
             }
-            else if (checkoutDto.TotOrderCost != null && checkoutDto.TotOrderCost!=0)
+            else if (checkoutDto.TotOrderCost != null && checkoutDto.TotOrderCost != 0)
             {
                 checkoutDto.TotOrderCost = c.CartTotValue() + (double)tc;
             }
+
+            HttpContext.Session.SetJson("totOrderCost", checkoutDto.TotOrderCost);
 
             return View(checkoutDto);
         }
@@ -69,8 +73,8 @@ namespace WebShop.Controllers
 
                 Cart c = HttpContext.Session.GetJson<Cart>("cart") ?? new Cart();
                 int? n = HttpContext.Session.GetJson<int>("prodsInCart");
-                double? tc = HttpContext.Session.GetJson<double>("totOrderCost");
 
+                //double? tc = HttpContext.Session.GetJson<double>("totOrderCost");
 
                 checkoutDto.Cart = c;
                 checkoutDto.TotQuantityInCart = n;
@@ -86,16 +90,91 @@ namespace WebShop.Controllers
         [HttpPost]
         public IActionResult OrderForm(CheckoutDto chDto)
         {
-            if (chDto!=null)
+            if (chDto != null)
             {
-                      
-                var j = 23;
-               
+                Cart c = HttpContext.Session.GetJson<Cart>("cart");
+                int? n = HttpContext.Session.GetJson<int>("prodsInCart");
+                double? tc = HttpContext.Session.GetJson<double>("totOrderCost");
+                double? fc = HttpContext.Session.GetJson<double>("freightCost");
+
+                if (c != null && n != null && tc != null && fc != null)
+                {
+                    Customer cust = new Customer    //  Create ordering Customer
+                    {
+                        Email = chDto.Email,
+                        FirstName = chDto.FirstName,
+                        LastName = chDto.LastName,
+                        Address = chDto.Address,
+                        Zip = chDto.Zip,
+                        City = chDto.City,
+                        Country = chDto.Country
+                    };
+                    _context.Customers.Add(cust);
+                    _context.SaveChanges();
 
 
+                    int custId = cust.Id;      // Get Id of created customer
 
+                    string freight_option = "";
+                    switch (fc)
+                    {
+                        case 0:
+                            freight_option = "PostNord Standard 2-3 dagar 0:-";
+                            break;
+                        case 19:
+                            freight_option = "DBSchenker Standard 2-3 dagar 19:-";
+                            break;
+                        case 39:
+                            freight_option = "Postnord Express 1 dag 39:-";
+                            break;
+                        case 49:
+                            freight_option = "DBSchenker Express 1 dag 49:-";
+                            break;
+                    }
+
+                    Order order = new Order     // Add to Order-table
+                    {
+                        OrderDate = DateTime.Now,
+                        TotOrderCost = (double)tc,
+                        FreightCost = (double)fc,
+                        FreightOptionName = freight_option,
+                        PaymentOption = chDto.PaymentMethod,
+                        CustomerId = custId
+                    };
+                    _context.Orders.Add(order);
+                    _context.SaveChanges();
+
+                    int orderId = order.Id;
+
+                    foreach (var l in c.Lines)    // Add to OrderCartLine-table
+                    {
+                        var oc = new OrderCartLine
+                        {
+                            OrderId = orderId,
+                            Quantity = l.Quantity,
+                            ProdId = l.Product.Id
+                        };
+                        _context.OrderCartLines.Add(oc);
+
+
+                        var p = _context.Products.Where(p => p.Id == l.Product.Id).FirstOrDefault();   // Change QuantityInstore
+                        if (p != null)
+                        {
+                            p.QuantityInStore = p.QuantityInStore - l.Quantity;
+                            _context.Products.Update(p);
+                        }
+                    }
+                    _context.SaveChanges();   // adds ordercartlines and updates product quantities
+
+                    HttpContext.Session.SetJson("prodsInCart", 0);   // Visa tom cart
+                  
+                    //HttpContext.Session.SetJson("totOrderCost",0);
+                    //HttpContext.Session.SetJson("freightCost",0);
+
+                    return View("OrderThankYou", order);
+                }
             }
-            return View(null);
+            return RedirectToAction("Checkout");
         }
 
 
@@ -124,7 +203,7 @@ namespace WebShop.Controllers
 
                 string t = (string)HttpContext.Request.Headers.Referer;
                 if (t != null)
-                { 
+                {
                     if (!t.EndsWith("/Cart"))   // adding from cart
                     {
                         return RedirectToAction("ShowProduct", "Categories", new { id = p.CategoryId });
@@ -163,9 +242,15 @@ namespace WebShop.Controllers
 
                 return RedirectToAction("Index");
 
-
             }
             return RedirectToAction("Index");
+        }
+
+
+        //Help-function.After ordering, cart will be cleared
+        public void ClearCart()
+        {
+            HttpContext.Session.SetJson("prodsInCart", 0);
         }
     }
 }

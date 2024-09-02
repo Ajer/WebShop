@@ -368,6 +368,12 @@ li button {
     /*  Slideshow - end */
 
 
+#order_thank_you li { 
+    list-style-type:disc;
+}
+
+
+
 /* -------- media-queries -----------*/
 
 
@@ -379,6 +385,10 @@ li button {
 
         .header_slogan {
             margin-left: -40px;
+        }
+
+        .myslideshow {
+            margin-left: 0px;
         }
 
         .myfooter_col {
@@ -451,6 +461,10 @@ li button {
           margin-left: -40px;
        }
 
+       .myslideshow {
+            margin-left: 0px;
+       }
+
       .myfooter_col {
          margin-right: 70px;
       }
@@ -515,6 +529,10 @@ li button {
   @media only screen and (min-width: 400px) {
      html {
         font-size: 16px;
+     }
+
+     .myslideshow{
+         margin-left:0px;
      }
 
      .header_slogan {
@@ -587,6 +605,10 @@ li button {
             margin-left: -45px;
         }
 
+        .myslideshow {
+            margin:0;
+        }
+
         .myfooter_col {
             margin-right: 70px;
         }
@@ -635,6 +657,7 @@ li button {
         #searchSection {
             min-height: 6200px;
         }
+
     }
 
     @media only screen and (min-width: 576px) {
@@ -836,6 +859,10 @@ li button {
         #checkoutSection {
             min-height: 1600px;
         }
+
+        #order_thank_you {
+            min-height: 850px;
+        }
     }
 
     @media only screen and (min-width: 1100px) {
@@ -866,6 +893,10 @@ li button {
 
         #checkoutSection {
             min-height: 1600px;
+        }
+
+        #order_thank_you {
+            min-height: 850px;
         }
     }
 
@@ -905,6 +936,10 @@ li button {
         #checkoutSection {
             min-height: 1200px;
         }
+
+        #order_thank_you {
+            min-height: 850px;
+        }
     }
 
     @media only screen and (min-width: 1400px) {
@@ -941,4 +976,7 @@ li button {
             min-height: 1200px;
         }
 
+        #order_thank_you {
+            min-height: 850px;
+        }
     }

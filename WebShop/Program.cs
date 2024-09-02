@@ -18,7 +18,7 @@ builder.Services.AddDistributedMemoryCache();        // Session : change to sql-
 
 builder.Services.AddSession(opts =>                  // Session
 {
-    opts.IdleTimeout = TimeSpan.FromMinutes(30);       // change time in real app
+    opts.IdleTimeout = TimeSpan.FromDays(1);       // change time in real app
     opts.Cookie.IsEssential = true;
     opts.Cookie.SecurePolicy = CookieSecurePolicy.Always;   // Only https session requests
 });
