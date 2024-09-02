@@ -202,15 +202,45 @@ namespace WebShop.Controllers
                 HttpContext.Session.SetJson("prodsInCart", n);
 
                 string t = (string)HttpContext.Request.Headers.Referer;
+
                 if (t != null)
                 {
-                    if (!t.EndsWith("/Cart"))   // adding from cart
+                    if (t.EndsWith("/Cart"))     // adding from cart 
+                    {
+                        return RedirectToAction("Index");                         
+                    }
+                    else if(t.Contains("/Search?"))  // adding from search-page
+                    {
+                        string q1 = "";
+                        int q2 = 0;
+                        
+
+                        int ind = t.IndexOf("srch=");
+                        if (ind != -1)
+                        {
+                            string? str = t.Substring(ind + 5);
+
+                            if (str.Contains("&showPage="))
+                            {
+                                int ind2 = str.IndexOf("&showPage=");
+                                if (ind2 != -1)
+                                {
+                                    q1 = str.Substring(0, ind2);
+                                    string? s = str.Substring(ind2 + 10);
+                                    bool r = int.TryParse(s, out q2);
+                                }
+                            }
+                            else
+                            {
+                                q1 = str;
+                            }
+                        }                     
+
+                        return RedirectToAction("Search", "Products", new { srch = q1, showPage=q2 });
+                    }
+                    else   // adding from category-page
                     {
                         return RedirectToAction("ShowProduct", "Categories", new { id = p.CategoryId });
-                    }
-                    else
-                    {
-                        return RedirectToAction("Index");   // adding from category-page
                     }
                 }
             }

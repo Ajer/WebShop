@@ -35,9 +35,6 @@
  
     IEnumerable<ProductDto> theList = Model.ProdDtos;
 
-    // 7 => skip(0*8).take(7) => (maxPageIndex 0,rest 7) , ShowPage 0  => 1 sida
-    // 8 => skip(0*8).take(8) => (maxPageIndex 0,rest 8) , showPage 0  => 1 sida
-
     if (nProdSearch >8)
     {
         // 18 => skip(0*8).take(8) , skip(1*8).take(8), skip(2*8).take(2) => (maxPageIndex 2,rest 2) , showPage 0,1,2 => 3 sidor
@@ -99,7 +96,7 @@
 
                     <div class="mt-auto" style="clear:both">
                         <form class="cartAdd" asp-controller="Cart" asp-action="AddToCart" method="post" asp-route-id="@item.Id">
-                            <input type="submit" value="Lägg i varukorgen" id="cart-btn" class="btn btn-dark" style="max-width:200px" />
+                            <input type="submit" value="Lägg i varukorgen" id="srch-cart-btn" class="btn btn-dark" style="max-width:200px" />
                         </form>
                     </div>
 
@@ -125,29 +122,11 @@
 
                        string theC = (i == Model.ShowPage + 1) ? "page-item active" : "page-item";
                  
-
                        <li class="@Url.Content(theC)" id="@Url.Content(i.ToString())" aria-current="page">
                          <a href="@Url.Action("ChangeSearchPaginationPage", "Products",
                            new {SearchString=Model.SearchString,ShowPage=i-1})" class="page-link">@Url.Content(i.ToString())</a>
                        </li>
                    }
-
-
-                    @* <li class="page-item active" aria-current="page">
-                         <a href="@Url.Action("ChangeSearchPaginationPage", "Products",
-                        new {SearchString=Model.SearchString,ShowPage=1})" class="page-link">1</a>
-                    </li>
-
-                    <li class="page-item" >
-                       <a href="@Url.Action("ChangeSearchPaginationPage", "Products",
-                         new {SearchString=Model.SearchString,ShowPage=2})" class="page-link">2</a>        
-                    </li>
-                
-                    <li class="page-item">
-                           <a href="@Url.Action("ChangeSearchPaginationPage", "Products",
-                        new {SearchString=Model.SearchString,ShowPage=3})" class="page-link">3</a>
-                    </li> *@
-                 
 
                     <li class="@Url.Content(rightArrow)">
                        <a href="@Url.Action("ChangeSearchPaginationPage", "Products",

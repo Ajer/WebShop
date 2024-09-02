@@ -57,7 +57,7 @@ namespace WebShop.Controllers
         public IActionResult Search(string? srch,int showPage=0)
         {
 
-            SearchDto searchDto = new SearchDto();
+             SearchDto searchDto = new SearchDto();
 
             if (srch!=null)
             {
@@ -112,9 +112,7 @@ namespace WebShop.Controllers
                     }
                 
                     searchDto.SearchString = srch;
-                    searchDto.ShowPage = showPage;
-
-  
+                    searchDto.ShowPage = showPage;  
                 }
             }
             return View(searchDto);   // Empty searchDto if non-valid
