@@ -276,6 +276,36 @@ namespace WebShop.Controllers
             return RedirectToAction("Index");
         }
 
+        // Post: Removes one complete product_line with id = Product.Id from the cart
+        public async Task<IActionResult> RemoveOneLine(int? id)
+        {
+       
+            Cart c = HttpContext.Session.GetJson<Cart>("cart") ?? new Cart();
+
+            var line = c.Lines.Where(c => c.Product.Id == id).FirstOrDefault();
+            int nLine = line.Quantity;
+
+            if (line != null)
+            {
+                c.RemoveLine(line);
+
+                HttpContext.Session.SetJson("cart", c);
+
+                int? n = HttpContext.Session.GetJson<int>("prodsInCart");
+                if (n != null)
+                {
+                    n = n - nLine;
+                }
+
+                HttpContext.Session.SetJson("prodsInCart", n);
+
+
+                return RedirectToAction("Index");
+
+            }
+            return RedirectToAction("Index");
+        }
+
 
         //Help-function.After ordering, cart will be cleared
         public void ClearCart()
