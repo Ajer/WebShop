@@ -148,6 +148,15 @@ body {
     border:1px solid lightgray;
 }
 
+.col_green{
+    color:forestgreen;
+}
+
+.col_red{
+    color:crimson;
+}
+
+
 .long_t{
     margin-right:20px;
 }

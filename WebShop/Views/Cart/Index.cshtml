@@ -29,9 +29,23 @@
                  <tbody>
                    @foreach(var line in Model.Cart.Lines)
                    {
-                       
+                            string c = "";
+                            string msg = "";
+
+                                if(line.Product.QuantityInStore>=line.Quantity)      @*  Enough in store of product to make order? *@
+                                {
+                                    c = "col_green";
+                                    msg = "* i lager";
+                                }
+                                else
+                                {
+                                    var inStockDate = new DateTime(2024,9,24).ToString("yyyy-MM-dd");
+                                    c = "col_red";
+                                    msg = "* ej i lager. (i lager " + inStockDate + ")";
+                            }
+
                        <tr>
-                         <td class="text-left" style="font-weight:normal">@line.Product.Name<p style="margin-top:5px;margin-bottom:-2px;font-size:14px;font-weight:600;color:forestgreen;list-style:disc">I lager</p></td>
+                         <td class="text-left" style="font-weight:normal">@line.Product.Name<p class="@Url.Content(c)" style="margin-top:5px;margin-bottom:-2px;font-size:14px;font-weight:600;">@Url.Content(msg)</p></td>
                          
                          <td class="text-center">
                              <div class="input-group" style="width:120px;margin-top:-2px">
