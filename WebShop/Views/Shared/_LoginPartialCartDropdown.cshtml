@@ -23,6 +23,12 @@
                     <li>
                         <button class="nav-link text-dark dropdown-item" onclick="window.location.href='/Identity/Account/Manage/Index'" title="Manage"><span style="margin-left:15px">@User.Identity?.Name</span></button>
                     </li>
+                    @if(User.IsInRole("Admin"))
+                    { 
+                        <li>
+                            <button class="nav-link text-dark dropdown-item" onclick="window.location.href='/Products/Index'"><span style="margin-left:15px">Admin</span></button>
+                        </li>
+                    }
                     <li>
                         <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
                             <button type="submit" id="logout" class="nav-link btn btn-link text-dark dropdown-item"><span style="margin-left:15px">Logga ut</span></button>
