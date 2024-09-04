@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using WebShop.Data;
 using WebShop.Dto;
 using WebShop.Infrastructure;
@@ -14,22 +17,49 @@ using WebShop.Models;
 
 namespace WebShop.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public class ProductsController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<IdentityUser> _userManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
 
-        public ProductsController(ApplicationDbContext context)
+        public ProductsController(ApplicationDbContext context, UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager)
         {
             _context = context;
+            _userManager = userManager;
+            _roleManager = roleManager;
         }
 
         // GET: Products 
         public async Task<IActionResult> Index()
         {
+
+
             var applicationDbContext = _context.Products.Include(p => p.Category);
             return View(await applicationDbContext.ToListAsync());
         }
+
+        //private async Task AddUserToAdmin()
+        //{
+        //    var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+        //    if (userId == "1f6d25fc-c568-41ac-93ef-564779fa8b7b")   // admin@example.com
+        //    {
+        //        if (!User.IsInRole("Admin"))   
+        //        {
+        //            var user = await  _userManager.FindByIdAsync(userId);
+        //            var role = new IdentityRole("Admin");
+        //            await _roleManager.CreateAsync(role);
+
+        //            //add the role to userAdmin
+        //            await _userManager.AddToRoleAsync(user, "Admin");
+        //        }
+        //    }
+        //}
+
+
+
 
         // GET: Products/Details/5
         // [AllowAnonymous]
@@ -119,7 +149,7 @@ namespace WebShop.Controllers
         }
 
 
-        public int getParamsForPagination(List<ProductDto> prodDtos,out int rest)
+        private int getParamsForPagination(List<ProductDto> prodDtos,out int rest)
         {
        
             int nbrTot = prodDtos.Count;
@@ -163,9 +193,9 @@ namespace WebShop.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Name,Description,Price,DiscountPrice,IsDiscount,QuantityInStore,ImageUrl,CategoryId")] Product product)
         {
-            if (ModelState.IsValid)
+            if (product!=null)
             {
-                _context.Add(product);
+                _context.Products.Add(product);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
@@ -195,19 +225,25 @@ namespace WebShop.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description,Price,DiscountPrice,IsDiscount,QuantityInStore,ImageUrl,CategoryId")] Product product)
+        public IActionResult Edit(int? id, [Bind("Id,Name,Description,Price,DiscountPrice,IsDiscount,QuantityInStore,ImageUrl,CategoryId")] Product product)  /*[Bind("Id,Name,Description,Price,DiscountPrice,IsDiscount,QuantityInStore,ImageUrl,CategoryId")]*/
         {
             if (id != product.Id)
             {
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            // AsNoTracking is needed below because you cant track 2 different products at the same time
+            // in _context.Products. The param 'product' is already being tracked. Otherwise Exception
+            // is thrown in _context.Products.Update(product);
+
+            var p = _context.Products.AsNoTracking().Where(p => p.Id == product.Id).FirstOrDefault();
+           
+            if (p!=null)
             {
                 try
-                {
-                    _context.Update(product);
-                    await _context.SaveChangesAsync();
+                {                 
+                    _context.Products.Update(product);
+                    _context.SaveChanges();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -217,7 +253,7 @@ namespace WebShop.Controllers
                     }
                     else
                     {
-                        throw;
+                        return NotFound();
                     }
                 }
                 return RedirectToAction(nameof(Index));
@@ -225,6 +261,8 @@ namespace WebShop.Controllers
             ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Id", product.CategoryId);
             return View(product);
         }
+
+
 
         // GET: Products/Delete/5
         public async Task<IActionResult> Delete(int? id)
@@ -244,6 +282,7 @@ namespace WebShop.Controllers
 
             return View(product);
         }
+
 
         // POST: Products/Delete/5
         [HttpPost, ActionName("Delete")]

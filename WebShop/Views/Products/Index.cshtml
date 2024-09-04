@@ -1,15 +1,27 @@
 ﻿@model IEnumerable<WebShop.Models.Product>
-
 @{
-    ViewData["Title"] = "Index";
+    Layout = "_LayoutDashboard";
 }
 
-<h1>Index</h1>
+@{
+    ViewData["Title"] = "Hantera Produkter";
+}
 
+<style>
+   body{
+        background-color: #eef2f9;
+   }
+</style>
+
+<section style="">
+<h3 style="margin-top:40px;">Hantera Produkter</h3>
 <p>
-    <a asp-action="Create">Create New</a>
+    <a id="create_new_product" asp-action="Create">Skapa Ny</a>
 </p>
-<table class="table">
+
+<h4>Alla Produkter</h4>
+
+    <table class="table" style="">
     <thead>
         <tr>
             <th>
@@ -40,7 +52,8 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+    @foreach (var item in Model)
+    {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
@@ -67,11 +80,14 @@
                 @Html.DisplayFor(modelItem => item.Category.Id)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a class="edit_product" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                @* <a asp-action="Details" asp-route-id="@item.Id">Details</a> | *@
+                <a class="delete_product" asp-action="Delete" asp-route-id="@item.Id">Del</a>
             </td>
         </tr>
-}
+      }
     </tbody>
 </table>
+</section>
+
+

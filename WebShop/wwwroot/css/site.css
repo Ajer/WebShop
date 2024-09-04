@@ -61,10 +61,37 @@ body {
     text-decoration: none;
 }
 
+/*----dashboard-----*/
+
+#create_new_product, .back_to_list, #create_new_product:visited, .back_to_list:visited, #create_new_product:active, .back_to_list:active, #create_new_product:hover, .back_to_list:hover {
+    color: black;
+    background-color: transparent;
+}
+
+.edit_product, .edit_product:visited, .edit_product:active, .edit_product:hover {
+    color: forestgreen;
+    font-weight:bold;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+.delete_product, .delete_product:visited, .delete_product:active, .delete_product:hover {
+    color: darkred;
+    font-weight: bold;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+#edit_product_form .form-group, #create_product_form .form-group {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+/*---------------*/
 
 
-#order_form label{
-    font-weight:normal;
+#order_form label {
+    font-weight: normal;
 }
 
 #order_form input {
@@ -468,6 +495,10 @@ li button {
         #searchSection {
             min-height: 6200px;
         }
+
+        #order_thank_you {
+            min-height: 850px;
+        }
     }
 
     @media only screen and (min-width: 360px) {
@@ -551,6 +582,10 @@ li button {
      #searchSection {
             min-height: 6200px;
      }
+
+     #order_thank_you {
+            min-height: 850px;
+     }
    }
 
   @media only screen and (min-width: 400px) {
@@ -630,6 +665,10 @@ li button {
       #searchSection {
         min-height: 6200px;
       }
+
+      #order_thank_you {
+        min-height: 850px;
+      }
   }
 
     @media only screen and (min-width: 500px) {
@@ -706,6 +745,10 @@ li button {
             min-height: 6200px;
         }
 
+        #order_thank_you {
+            min-height: 850px;
+        }
+
     }
 
     @media only screen and (min-width: 576px) {
@@ -773,6 +816,10 @@ li button {
         #searchSection {
             min-height: 6200px;
         }
+
+        #order_thank_you {
+            min-height: 850px;
+        }
     }
 
 
@@ -834,6 +881,10 @@ li button {
             min-height: 1600px;
         }
 
+        #order_thank_you {
+            min-height: 850px;
+        }
+
         /*.prev {
         left: 0px;
     }
@@ -883,6 +934,10 @@ li button {
         #checkoutSection {
             min-height: 1600px;
         }
+
+        #order_thank_you {
+            min-height: 850px;
+        }
     }
 
     @media only screen and (min-width: 995px) {
@@ -904,6 +959,10 @@ li button {
 
         #checkoutSection {
             min-height: 1600px;
+        }
+
+        #order_thank_you {
+            min-height: 850px;
         }
     }
 

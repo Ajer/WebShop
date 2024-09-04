@@ -167,9 +167,7 @@ namespace WebShop.Controllers
                     _context.SaveChanges();   // adds ordercartlines and updates product quantities
 
                     HttpContext.Session.SetJson("prodsInCart", 0);   // Visa tom cart
-                  
-                    //HttpContext.Session.SetJson("totOrderCost",0);
-                    //HttpContext.Session.SetJson("freightCost",0);
+       
 
                     return View("OrderThankYou", order);
                 }
@@ -308,9 +306,9 @@ namespace WebShop.Controllers
 
 
         //Help-function.After ordering, cart will be cleared
-        public void ClearCart()
-        {
-            HttpContext.Session.SetJson("prodsInCart", 0);
-        }
+        //public void ClearCart()
+        //{
+        //    HttpContext.Session.SetJson("prodsInCart", 0);
+        //}
     }
 }
