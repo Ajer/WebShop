@@ -17,7 +17,9 @@ using WebShop.Models;
 
 namespace WebShop.Controllers
 {
-    //[Authorize(Roles = "Admin")]
+    
+    
+    [Authorize(Roles = "Admin")]
     public class ProductsController : Controller
     {
         private readonly ApplicationDbContext _context;
