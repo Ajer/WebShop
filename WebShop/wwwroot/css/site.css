@@ -296,7 +296,7 @@ li button {
 }
 
 #frontpage_link, #frontpage_link:visited, #frontpage_link:active, #frontpage_link:hover {
-    color: black;
+    color: darkblue;
     background-color: transparent;
     text-decoration: none;
 }

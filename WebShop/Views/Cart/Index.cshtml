@@ -32,17 +32,17 @@
                             string c = "";
                             string msg = "";
 
-                            if(line.Product.QuantityInStore>=line.Quantity)      @*  Enough in store of product to make order? *@
-                            {
+                                if(line.Product.QuantityInStore>=line.Quantity)      @*  Enough in store of product to make order? *@
+                                {
                                     c = "col_green";
                                     msg = "* i lager";
-                            }
-                            else
-                            { 
-                                    var inStockDate = new DateTime(2024,9,24).ToString("yyyy-MM-dd");
+                                }
+                                else
+                                { 
+                                    @* var inStockDate = new DateTime(2024,9,24).ToString("yyyy-MM-dd"); *@
                                     c = "col_red";
-                                    msg = "* ej i lager. (i lager " + inStockDate + ")";
-                            }
+                                    msg = "* ej i lager";  //" (i lager igen " + inStockDate + ")";
+                                }
 
                        <tr height="90px">
                          <td class="text-left" style="font-weight:normal">@line.Product.Name<p class="@Url.Content(c)" style="margin-top:5px;margin-bottom:-2px;font-size:14px;font-weight:600;">@Url.Content(msg)</p></td>
