@@ -71,6 +71,47 @@ namespace WebShop.Controllers
             
         }
 
+        // GET: Categories/ShowDiscountProduct
+        // Shows all products with discounts
+        [HttpGet("Categories/ShowDiscountProduct")]
+        public async Task<IActionResult> ShowDiscountProduct()
+        {
+                     
+            var prods = await _context.Products.Where(p => p.IsDiscount==true).ToListAsync();
+
+            if (prods != null)
+            {
+                List<ProductDto> prodDtos = new List<ProductDto>();
+                foreach (var p in prods)
+                {
+                    var cat = await _context.Categories.Where(c => c.Id == p.CategoryId).FirstOrDefaultAsync();
+
+                    if (cat != null)
+                    {
+                        var a = new ProductDto
+                        {
+                            Id = p.Id,
+                            Name = p.Name,
+                            CatName = cat.Name,
+                            SwedishCatName = cat.SwedishName,
+                            Description = p.Description,
+                            Price = p.Price,
+                            DiscountPrice = p.DiscountPrice,
+                            IsDiscount = p.IsDiscount,
+                            ImageUrl = p.ImageUrl,
+                            QuantityInStore = p.QuantityInStore
+                        };
+                        prodDtos.Add(a);
+                    }
+                }
+            
+                return View(prodDtos);
+            }
+            else
+            {
+                return RedirectToAction("Error404", "Error");
+            }
+        }
 
 
         // GET: Categories/Create

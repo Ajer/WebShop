@@ -236,6 +236,10 @@ namespace WebShop.Controllers
 
                         return RedirectToAction("Search", "Products", new { srch = q1, showPage=q2 });
                     }
+                    else if (t.EndsWith("/ShowDiscountProduct"))
+                    {
+                        return RedirectToAction("ShowDiscountProduct", "Categories");
+                    }
                     else   // adding from category-page
                     {
                         return RedirectToAction("ShowProduct", "Categories", new { id = p.CategoryId });
