@@ -462,7 +462,11 @@ li button {
             text-align: center;
         }
 
-        #register, #login {
+        #register, #login, #forgot_password, #resend_email_conf {
+            min-height: 1400px;
+        }
+
+        #manage_account, #manage_email, #manage_change_password, #manage_two_factor_auth, #manage_personal_data {
             min-height: 1400px;
         }
 
@@ -555,8 +559,12 @@ li button {
           text-align: center;
       }
 
-      #register, #login {
-         min-height: 1400px;
+      #register, #login, #forgot_password, #resend_email_conf {
+            min-height: 1400px;
+      }
+
+      #manage_account, #manage_email, #manage_change_password, #manage_two_factor_auth, #manage_personal_data {
+            min-height: 1400px;
       }
 
      .mycats {
@@ -648,9 +656,13 @@ li button {
         text-align: center;
     }
 
-     #register, #login {
+    #register, #login, #forgot_password, #resend_email_conf {
         min-height: 1400px;
-     }
+    }
+
+    #manage_account, #manage_email, #manage_change_password, #manage_two_factor_auth, #manage_personal_data {
+        min-height: 1400px;
+    }
 
      .mycats {
         margin-bottom: 30px;
@@ -704,6 +716,10 @@ li button {
     @media only screen and (min-width: 500px) {
         html {
             font-size: 16px;
+        }
+
+        #manage_account, #manage_email, #manage_change_password, #manage_two_factor_auth, #manage_personal_data {
+            min-height: 1400px;
         }
 
         #frontpage_discount_link {
@@ -792,6 +808,10 @@ li button {
             margin-left: 0px;
             margin-top: 10px;
             text-align: center;
+        }
+
+        #manage_account, #manage_email, #manage_change_password, #manage_two_factor_auth, #manage_personal_data {
+            min-height: 1400px;
         }
 
         .header_slogan {
@@ -884,8 +904,12 @@ li button {
             text-align: center;
         }
 
-        #register, #login {
+        #register, #login, #forgot_password, #resend_email_conf {
             min-height: 850px;
+        }
+
+        #manage_account, #manage_email, #manage_change_password, #manage_two_factor_auth, #manage_personal_data {
+            min-height: 700px;
         }
 
         .header_slogan {
