@@ -55,7 +55,7 @@ body {
  }
 
 
-.search_link, search_link:visited, .search_link:active, .search_link:hover {
+.search_link, .search_link:visited, .search_link:active, .search_link:hover {
     color: black;
     background-color: transparent;
     text-decoration: none;
@@ -285,10 +285,22 @@ li button {
     border: 1px solid black !important;
 }
 
-    /*.pagination > .active > a, .pagination > .active > a:hover, .pagination > .active > a:focus {
-        background-color: grayy !important;
-        border-color: grey !important;
-    }*/
+
+.discount-container {
+    padding-top: 5px;
+    min-width:350px;
+    width:95%;
+    text-align:left;
+    margin:auto;
+   /* height:100px;*/
+}
+
+#frontpage_link, #frontpage_link:visited, #frontpage_link:active, #frontpage_link:hover {
+    color: black;
+    background-color: transparent;
+    text-decoration: none;
+}
+
 
 
 
@@ -441,7 +453,13 @@ li button {
         }
 
         #home_index {
-            min-height: 1600px;
+            min-height: 1650px;
+        }
+
+        #frontpage_discount_link {
+            margin-left: -20px;
+            margin-top: 10px;
+            text-align: center;
         }
 
         #register, #login {
@@ -528,7 +546,13 @@ li button {
       }
 
       #home_index {
-         min-height: 1600px;
+         min-height: 1650px;
+      }
+      
+      #frontpage_discount_link {
+          margin-left: 0px;
+          margin-top: 10px;
+          text-align: center;
       }
 
       #register, #login {
@@ -615,8 +639,14 @@ li button {
      }
 
      #home_index {
-        min-height: 1600px;
+        min-height: 1650px;
      }
+
+    #frontpage_discount_link {
+        margin-left: 0px;
+        margin-top: 10px;
+        text-align: center;
+    }
 
      #register, #login {
         min-height: 1400px;
@@ -676,9 +706,11 @@ li button {
             font-size: 16px;
         }
 
-        /*#home_index {
-            min-height: 900px;
-        }*/
+        #frontpage_discount_link {
+            margin-left: 0px;
+            margin-top: 10px;
+            text-align: center;
+        }
 
         .order_summary {
             margin-top: 10px;
@@ -756,6 +788,12 @@ li button {
             font-size: 16px;
         }
 
+        #frontpage_discount_link {
+            margin-left: 0px;
+            margin-top: 10px;
+            text-align: center;
+        }
+
         .header_slogan {
             margin-left: -45px;
         }
@@ -827,8 +865,7 @@ li button {
         html {
             font-size: 16px;
         }
-
-        
+      
         .order_summary {
             margin-top: 10px;
         }
@@ -838,7 +875,13 @@ li button {
         }
 
         #home_index {
-            min-height: 1100px;
+            min-height: 1150px;
+        }
+
+        #frontpage_discount_link {
+            margin-left: 0px;
+            margin-top: 10px;
+            text-align: center;
         }
 
         #register, #login {
@@ -896,7 +939,13 @@ li button {
 
     @media only screen and (min-width: 900px) {
         #home_index {
-            min-height: 1100px;
+            min-height: 1150px;
+        }
+
+        #frontpage_discount_link {
+            margin-left: 0px;
+            margin-top: 10px;
+            text-align: center;
         }
 
         .header_slogan {
@@ -942,7 +991,13 @@ li button {
 
     @media only screen and (min-width: 995px) {
         #home_index {
-            min-height: 1100px;
+            min-height: 1150px;
+        }
+
+        #frontpage_discount_link {
+            margin-left: 0px;
+            margin-top: 10px;
+            text-align: center;
         }
 
         .order_summary {
@@ -972,7 +1027,13 @@ li button {
         }
 
         #home_index {
-            min-height: 1100px;
+            min-height: 1150px;
+        }
+
+        #frontpage_discount_link {
+            margin-left: 0px;
+            margin-top: 10px;
+            text-align: center;
         }
 
         .order_summary {
@@ -1019,7 +1080,13 @@ li button {
         }
 
         #home_index {
-            min-height: 1100px;
+            min-height: 1150px;
+        }
+
+        #frontpage_discount_link {
+            margin-left:0px;
+            margin-top: 10px;
+            text-align: center;
         }
 
         .order_summary {
@@ -1059,6 +1126,12 @@ li button {
     @media only screen and (min-width: 1200px) {
         #home_index {
             min-height: 850px;
+        }
+
+        #frontpage_discount_link {
+            margin-left: 0px;
+            margin-top: 0px;
+            text-align: left;
         }
 
         .order_summary{
@@ -1103,6 +1176,12 @@ li button {
     @media only screen and (min-width: 1400px) {
         .header_slogan {
             margin-left: -75px;
+        }
+
+        #frontpage_discount_link{
+            margin-left:25px;
+            margin-top:0px;
+            text-align:left;
         }
 
         .prev {
