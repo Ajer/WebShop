@@ -64,24 +64,45 @@ namespace WebShop.Controllers
 
 
         // GET: Products/Details/5
-        // [AllowAnonymous]
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
+        //[AllowAnonymous]
+        //public async Task<IActionResult> Details(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            var product = await _context.Products
-                .Include(p => p.Category)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (product == null)
-            {
-                return NotFound();
-            }
+        //    var p = await _context.Products
+        //        .Include(p => p.Category)
+        //        .FirstOrDefaultAsync(m => m.Id == id);
 
-            return View(product);
-        }
+        //    if (p == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    var cat = await _context.Categories.Where(c => c.Id == p.CategoryId).FirstOrDefaultAsync();
+
+        //    if (cat != null)
+        //    {
+        //        var a = new ProductDto
+        //        {
+        //            Id = p.Id,
+        //            Name = p.Name,
+        //            CatName = cat.Name,
+        //            SwedishCatName = cat.SwedishName,
+        //            Description = p.Description,
+        //            Price = p.Price,
+        //            DiscountPrice = p.DiscountPrice,
+        //            IsDiscount = p.IsDiscount,
+        //            ImageUrl = p.ImageUrl,
+        //            QuantityInStore = p.QuantityInStore
+        //        };
+
+        //        return View(a);
+        //    }
+        //    return RedirectToAction("ShowProduct", "Categories", new { id = cat.Id });
+        //}
 
 
         //Get: Returns a searchresult from search-form in web-shop

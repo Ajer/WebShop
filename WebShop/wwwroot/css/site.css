@@ -253,6 +253,18 @@ li button {
             /* box-shadow: 0 2px 2px rgba(0,0,0,0.2);  */
  }
 
+.btnCats:hover {
+    /*font-weight:500;*/
+
+   /* color: gray;
+    border: 2px solid lightgray;
+    transition-duration: 0.3s;*/
+
+     /*background-color:#f2f2f2;*/
+    /* text-decoration:underline;*/
+}
+
+
     #heroSection {
         min-height: 20rem;
     }
