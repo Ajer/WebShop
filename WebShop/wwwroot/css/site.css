@@ -3,7 +3,6 @@ html {
 }
 
 
-
 html {
     position: relative;
     min-height: 100%;
@@ -11,8 +10,12 @@ html {
 
 body {
     margin-bottom: 60px;
-    padding-left:0px;
-    padding-right:0px;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+#nav-h1 {
+    min-width:500px;
 }
 
 .fnt{
@@ -193,8 +196,8 @@ body {
     background-color:black;
     padding-top:20px;
     min-height:300px;
-   min-width:500px;        /*--- 500 ----*/
-
+    min-width:500px;        /*--- 500 ----*/
+    /*min-width:100% !important;*/
 }
 
 .myfooter_col{

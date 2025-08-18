@@ -37,8 +37,8 @@ namespace WebShop.Controllers
                 return NotFound();
             }
 
-            var cat = await _context.Categories.Where(c => c.Id == id).FirstOrDefaultAsync();
-            var prods = await _context.Products.Where(p => p.CategoryId == id).ToListAsync(); // only products with categoryId==Id
+            var cat = await _context.Categories.AsNoTracking().Where(c => c.Id == id).FirstOrDefaultAsync();
+            var prods = await _context.Products.AsNoTracking().Where(p => p.CategoryId == id).ToListAsync(); // only products with categoryId==Id
 
             if (cat != null && prods != null)
             {

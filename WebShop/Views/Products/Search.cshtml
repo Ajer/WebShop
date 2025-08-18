@@ -13,7 +13,7 @@
 }
 
 <div>
-    <h6>Hem->Produkter->Sökresultat</h6>   @* breadcrumbs *@
+    <h6><a asp-controller="Home" asp-action="Index" style="color:black;">Hem</a>->Produkter->Sökresultat</h6>   @* breadcrumbs *@
 </div>
 
 <h5 style="margin-top:30px;">@Url.Content(totSrch.ToString()) Sökresultat för '@Model.SearchString':</h5>

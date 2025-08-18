@@ -4,7 +4,7 @@ namespace WebShop.Models
 {
     public class Product
     {
-        public int Id { get; set; }
+        public int Id { get; set; }   // Change to long nbrs ? For instance : 1522920428869
 
         [MaxLength(100)]
         public string Name { get; set; }

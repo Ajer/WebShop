@@ -45,7 +45,6 @@ namespace WebShop.Controllers
             checkoutDto.Cart = c;
             checkoutDto.TotQuantityInCart = n;
 
-
             if (checkoutDto.TotOrderCost != null && checkoutDto.TotOrderCost == 0)
             {
                 checkoutDto.TotOrderCost = c.CartTotValue();  // init-value before freight is added
