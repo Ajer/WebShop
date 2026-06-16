@@ -7,8 +7,8 @@ namespace WebShop.Infrastructure
         public static void SetJson(this ISession session, string key, object value)
         {
             session.SetString(key, JsonSerializer.Serialize(value));
-            session.CommitAsync().Wait();
-        }
+            session.CommitAsync().Wait();  // Should first check if datastore is available otherwise this will throw an exception. 
+        }                                  // Ok for in-memory session.
 
         public static T? GetJson<T>(this ISession session, string key)
         {

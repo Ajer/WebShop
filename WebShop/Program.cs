@@ -48,7 +48,7 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 
 builder.Services.AddSession(opts =>                  // Session for in-memory but also for redis-sessions, These settings will create an extra cookie 
 {                                                         // on some pages because of .Net core data protection
-    opts.IdleTimeout = TimeSpan.FromMinutes(20);       // change time in real app
+    opts.IdleTimeout = TimeSpan.FromMinutes(20);       // change time in real app. No session-store set means in-memory-sessions.
     //opts.Cookie.Name = "sid";
     opts.Cookie.HttpOnly = true;
     opts.Cookie.IsEssential = true;

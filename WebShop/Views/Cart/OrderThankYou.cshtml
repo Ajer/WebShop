@@ -32,6 +32,22 @@
    </table>
   </div>
     @{
-        Accessor.HttpContext.Session.SetJson("cart", null);
+        if (Accessor.HttpContext.Session.GetString("prodsInCart") != null)
+        {
+           Accessor.HttpContext.Session.Remove("prodsInCart");
+        }
+        if (Accessor.HttpContext.Session.GetString("cart") != null)
+        {
+            Accessor.HttpContext.Session.Remove("cart");
+        }
+        if (Accessor.HttpContext.Session.GetString("totOrderCost") != null)
+        {
+            Accessor.HttpContext.Session.Remove("totOrderCost");
+        }
+        if (Accessor.HttpContext.Session.GetString("freightCost") != null)
+        {
+            Accessor.HttpContext.Session.Remove("freightCost");
+        }
+        // Accessor.HttpContext.Session.SetJson("cart", null);
     }
 </section>

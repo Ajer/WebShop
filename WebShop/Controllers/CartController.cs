@@ -166,8 +166,8 @@ namespace WebShop.Controllers
                     _context.SaveChanges();   // adds ordercartlines and updates product quantities
 
                     HttpContext.Session.SetJson("prodsInCart", 0);   // Visa tom cart
-       
 
+                
                     return View("OrderThankYou", order);
                 }
             }
