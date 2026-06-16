@@ -1,0 +1,11 @@
+﻿
+@{
+    ViewData["Title"] = "Get";
+    var fact = ViewData["Forecast"];
+} 
+<div>
+    <h4>Here is the weather:</h4>
+    <h3>@Url.Content(fact.ToString())</h3>
+</div>
+
+

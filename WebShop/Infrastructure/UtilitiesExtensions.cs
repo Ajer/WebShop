@@ -3,10 +3,10 @@
     public static class UtilitiesExtensions
     {
 
-        private static char[] invalidChars = { '<', '>', '&', '%', ';', '=', '{', '}', '(', ')' };
-
         public static bool IsValid(this string value)
         {
+            char[] invalidChars = { '<', '>', '&', '%', ';', '=', '{', '}', '(', ')' };
+
             if (value == null)
             {
                 return false;
