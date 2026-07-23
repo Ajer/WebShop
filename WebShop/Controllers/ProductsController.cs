@@ -37,7 +37,6 @@ namespace WebShop.Controllers
         public async Task<IActionResult> Index()
         {
 
-
             var applicationDbContext = _context.Products.Include(p => p.Category);
             return View(await applicationDbContext.ToListAsync());
         }

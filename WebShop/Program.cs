@@ -14,7 +14,6 @@ using WebShop.Views.Shared.Services;
 var builder = WebApplication.CreateBuilder(args);
 
 
-
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 
@@ -24,13 +23,23 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();   // Detailed DB-errors, development only
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+builder.Services.AddDefaultIdentity<IdentityUser>(options => 
+    options.SignIn.RequireConfirmedAccount = true)
     .AddRoles<IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
+
+// Override cookie settings above default settings for Identity cookies.
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.Cookie.SameSite = SameSiteMode.Strict;   // or Lax / None
+    options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+    options.Cookie.HttpOnly = true;
+});
 
 
 var redisString = builder.Configuration["ConnectionStrings:RedisConn"]??"";   // secrets.json  ,   WS/WC
 
 var redisOptions = new ConfigurationOptions();    // Default, empty options, used if no Redis connection string is provided. Will cause an error if Redis is attempted to be used without a valid connection string. 
+
 if (redisString != "")         // WS/WC
 {
     redisOptions = new ConfigurationOptions     // Experiment med Redis-server för sessioner. C har en server som kör på
@@ -60,7 +69,7 @@ else
 builder.Services.AddSession(opts =>                  // Session for in-memory but also for redis-sessions, These settings will create an extra cookie 
 {                                                         // on some pages because of .Net core data protection
     opts.IdleTimeout = TimeSpan.FromMinutes(20);       // change time in real app. 
-    //opts.Cookie.Name = "sid";                         No session-store set means in-memory-sessions.
+    //opts.Cookie.Name = "sid";                         
 
     opts.Cookie.HttpOnly = true;
     opts.Cookie.IsEssential = true;
@@ -116,22 +125,6 @@ app.UseSession();                               // Session
 
 // app.useOutputCaching();                          // Suggestion: Output caching, requires .AddOutputCaching() in services
 
-//app.Use(async (context, next) =>
-//{
-//    context.Response.Cookies.Append(
-//        "text",
-//        "Hoola B",
-//        new CookieOptions
-//        {
-//            HttpOnly = true,
-//            Secure = true,
-//            SameSite = SameSiteMode.Strict,
-//            Expires = DateTimeOffset.UtcNow.AddMinutes(2)
-//        }
-//    );
-
-//    await next();
-//});
 
 app.MapGet("/set", async (HttpContext ctx) =>   // Experimentell minimal endpoint för att testa Redis-sessioner     SESS
 {
