@@ -21,7 +21,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 
 
-builder.Services.AddDatabaseDeveloperPageExceptionFilter();   // Detailed DB-errors, development only
+//builder.Services.AddDatabaseDeveloperPageExceptionFilter();   // Detailed DB-errors, development only
+
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => 
     options.SignIn.RequireConfirmedAccount = true)
@@ -87,6 +88,10 @@ var db = redis.GetDatabase(2); // DB 2 over TLS          SESS
 
 //db.StringSet("session:123", "active");   //just an example
 
+if (builder.Environment.IsDevelopment())
+{
+    builder.Services.AddDatabaseDeveloperPageExceptionFilter();   // Detailed DB-errors, development only
+}
 
 
 //builder.Logging.AddFileLogger("logs/app.log");     // Lägg till logger som skriver till path
@@ -97,6 +102,7 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
+    app.UseDeveloperExceptionPage();   // Detailed DB-errors, development only
     app.UseMigrationsEndPoint();
 }
 else
@@ -193,3 +199,5 @@ app.UseStatusCodePagesWithRedirects("/Error/{0}"); //point to error page
 app.MapRazorPages();
 
 app.Run();
+
+
